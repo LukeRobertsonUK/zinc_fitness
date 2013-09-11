@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  exercise: 
+  reps: 1
+  rest_period: 1
+  weight_required: false
+  suggested_weight: 1.5
+  achieved_weight: 1.5
+  workout: 
+
+two:
+  exercise: 
+  reps: 1
+  rest_period: 1
+  weight_required: false
+  suggested_weight: 1.5
+  achieved_weight: 1.5
+  workout: 

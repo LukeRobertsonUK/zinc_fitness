@@ -1,0 +1,26 @@
+= nested_form_for(@workout) do |f|
+  - if @workout.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@workout.errors.count, "error")
+        prohibited this workout from being saved:
+      %ul
+        - @workout.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :description
+    %br/
+    = f.text_field :description
+  .field
+    = f.label :due_date
+    %br/
+    = f.date_select :due_date
+  .field
+    = f.label :user_id
+    %br/
+    = f.select(:user_id, User.all.map {|u| [u.full_name, u.id]},  {include_blank: "Template"})
+
+  = render 'fields', f: f
+
+  .actions
+    = f.submit
