@@ -7,4 +7,11 @@ class Workout < ActiveRecord::Base
 
   accepts_nested_attributes_for :exercise_sets, allow_destroy: true
 
+  amoeba do
+    enable
+    clone [:exercise_sets]
+
+  end
+
+
 end

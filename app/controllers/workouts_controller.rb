@@ -36,6 +36,7 @@ class WorkoutsController < ApplicationController
   # GET /workouts/1/edit
   def edit
     @workout = Workout.find(params[:id])
+    @editing = true
   end
 
   # POST /workouts
