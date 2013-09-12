@@ -13,22 +13,46 @@
 
 ul.exercise_set {
   padding-left: 0px;
-  padding: 0.5em;
-
+  // padding: 0.5em;
+  margin-bottom: 0px;
 }
 
 ul.exercise_set li {
   list-style: none;
   display: inline-block;
-  margin-right: 0.5em;
+  margin-right: 0.3em;
+  border-radius: 3px;
+  background: #eeeeee;
+  padding: 0.1em;
+  padding-right: 0.2em;
+  padding-left: 0.2em;
+  margin-top: 0.3em;
 }
 
 .exercise_set_header {
   font-weight: bold;
   margin: 0px;
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid #eeeeee;
+  margin-top: 1em;
+
 }
 
 .weight_entry {
-  width: 3em;
+  width: 5em;
+  margin-left: 0.3em;
+}
+
+.notes_entry {
+  width: 20em;
+  margin-left: 0.3em;
+}
+
+
+.complete_form {
+  display: inline-block;
+  margin-right: 0.3em;
+  padding-right: 0.1em;
+  margin-top: 0.3em;
+  padding-left: 0.2em
+
 }

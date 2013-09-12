@@ -5,6 +5,15 @@ class ExerciseSet < ActiveRecord::Base
 
   default_scope order('created_at' )
 
+  def to_string
+    case set_type
+    when "Resistance" then "#{self.exercise.name}: #{self.reps} reps"
+    when "Time Interval" then  "#{self.exercise.name}: #{self.time} secs"
+    when "Distance" then  "#{self.exercise.name}: #{self.distance} metres"
+
+    end
+
+  end
 
 
 
