@@ -1,3 +1,34 @@
 // Place all the styles related to the Workouts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// .container {
+//   width: 940px;
+// }
+
+.field {
+  display: inline-block;
+}
+
+
+ul.exercise_set {
+  padding-left: 0px;
+  padding: 0.5em;
+
+}
+
+ul.exercise_set li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+.exercise_set_header {
+  font-weight: bold;
+  margin: 0px;
+  border-bottom: 1px solid black;
+}
+
+.weight_entry {
+  width: 3em;
+}

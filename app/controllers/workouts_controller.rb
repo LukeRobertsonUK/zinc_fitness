@@ -82,4 +82,26 @@ class WorkoutsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def complete
+    @workout = Workout.find(params[:id])
+  end
+
+
+
+  def duplicate
+    @workout = Workout.find(params[:id])
+    @duplicate = @workout.amoeba_dup
+    @duplicate.exercise_sets.each do |set|
+      set.suggested_weight = nil
+      set.achieved_weight = nil
+      set.notes = nil
+    end
+    @duplicate.save!
+
+
+    redirect_to workouts_path
+  end
+
+
 end

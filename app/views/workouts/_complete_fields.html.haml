@@ -1,0 +1,33 @@
+= f.fields_for :exercise_sets do |exercise_set_form|
+
+  -if exercise_set_form.object.exercise
+    %p.exercise_set_header
+      = "#{exercise_set_form.object.exercise.name} (#{exercise_set_form.object.set_type})"
+    %ul.exercise_set
+      -unless exercise_set_form.object.reps.blank?
+        %li
+          = "Reps: #{exercise_set_form.object.reps}"
+      -unless exercise_set_form.object.suggested_weight.blank?
+        %li
+          = "Target Weight: #{exercise_set_form.object.suggested_weight}kg"
+
+      -unless exercise_set_form.object.distance.blank?
+        %li
+          = "Distance: #{exercise_set_form.object.distance}m"
+      -unless exercise_set_form.object.time.blank?
+        %li
+          = "Interval: #{exercise_set_form.object.time}s"
+      -unless exercise_set_form.object.rest_period.blank?
+        %li
+          = "Rest Period: #{exercise_set_form.object.rest_period}s"
+      -unless exercise_set_form.object.suggested_weight.blank?
+        .field
+          = exercise_set_form.label :achieved_weight, "Achieved Weight (kg):"
+          =exercise_set_form.text_field :achieved_weight, class: "weight_entry"
+      .field
+        =exercise_set_form.label :notes
+        =exercise_set_form.text_field :notes
+
+  -else
+    %br
+

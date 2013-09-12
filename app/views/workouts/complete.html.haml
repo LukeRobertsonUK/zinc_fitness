@@ -1,0 +1,15 @@
+%h2
+  = "In Progress: #{@workout.description}"
+%h3
+  - if @workout.user
+    = "Good luck #{@workout.user.first_name}!"
+  - else
+    Template
+
+%p
+  Due date:
+  = @workout.due_date.to_formatted_s(:long_ordinal)
+
+%h3
+  Sets
+=render 'complete_form'

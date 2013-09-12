@@ -1,0 +1,56 @@
+%h2
+  = @workout.description
+%h3
+  - if @workout.user
+    = @workout.user.full_name
+  - else
+    Template
+
+%p
+  - if @workout.due_date
+    Due date:
+    = @workout.due_date.to_formatted_s(:long_ordinal)
+
+%h3
+  Sets
+- @workout.exercise_sets.each do |set|
+  -if set.exercise
+    %p.exercise_set_header
+      = "#{set.exercise.name} (#{set.set_type})"
+    %ul.exercise_set
+      -unless set.reps.blank?
+        %li
+          = "Reps: #{set.reps}"
+      -unless set.achieved_weight.blank?
+        %li
+          = "Achieved Weight: #{set.achieved_weight}kg"
+      -unless set.suggested_weight.blank?
+        %li
+          = "Target Weight: #{set.suggested_weight}kg"
+      -unless set.distance.blank?
+        %li
+          = "Distance: #{set.distance}m"
+      -unless set.time.blank?
+        %li
+          = "Interval: #{set.time}s"
+      -unless set.rest_period.blank?
+        %li
+          = "Rest Period: #{set.rest_period}s"
+      -unless set.notes.blank?
+        %li
+          Notes: &ldquo;
+          ="#{set.notes}"
+          &rdquo;
+  -else
+    %br
+
+
+
+
+= link_to 'Edit', edit_workout_path(@workout)
+|
+= link_to 'Back', workouts_path
+
+= button_to "Clone", duplicate_workout_path(@workout), class: "btn btn-warning"
+- if @workout.user
+  = button_to "Smash It!", complete_workout_path(@workout), method: :get, class: "btn btn-success"
