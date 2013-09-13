@@ -3,26 +3,14 @@
   -if exercise_set_form.object.exercise
     %h4.exercise_set_header
       = exercise_set_form.object.to_string
-    %ul.exercise_set
-      -unless (exercise_set_form.object.distance.blank? || exercise_set_form.object.set_type == "Distance")
-        %li
-          = "Distance: #{exercise_set_form.object.distance}m"
-      -unless (exercise_set_form.object.time.blank? || exercise_set_form.object.set_type == "Time Interval")
-        %li
-          = "Interval: #{exercise_set_form.object.time}s"
-      -unless (exercise_set_form.object.reps.blank? || exercise_set_form.object.set_type == "Resistance")
-        %li
-          = "Reps: #{exercise_set_form.object.reps}"
-      -unless exercise_set_form.object.suggested_weight.blank?
-        %li
-          = "Target Weight: #{exercise_set_form.object.suggested_weight}kg"
-      -unless exercise_set_form.object.rest_period.blank?
-        %li
-          = "Rest: #{exercise_set_form.object.rest_period}s"
+
     -if exercise_set_form.object.weight_required == true
       .field.complete_form
-        = exercise_set_form.label :achieved_weight, "Achieved Weight (kg):"
-        =exercise_set_form.number_field :achieved_weight, step: 0.1, class: "weight_entry"
+        - if exercise_set_form.object.suggested_weight.blank?
+          = exercise_set_form.label :achieved_weight, "Weight (kg):"
+        - else
+          = exercise_set_form.label :achieved_weight, "Weight (target #{exercise_set_form.object.suggested_weight}kg):"
+        =exercise_set_form.number_field :achieved_weight, step: 0.5, class: "weight_entry"
     .field.complete_form
       =exercise_set_form.label :notes, "Notes:"
       =exercise_set_form.text_field :notes, class: "notes_entry"

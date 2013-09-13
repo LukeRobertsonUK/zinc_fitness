@@ -26,9 +26,6 @@
           -unless (set.time.blank? || set.set_type == "Time Interval")
             %li
               = "Interval: #{set.time}s"
-          -unless (set.set_type == "Resistance" || set.reps.blank?)
-            %li
-              = "Reps: #{set.reps}"
           -unless set.achieved_weight.blank?
             %li
               = "Achieved Weight: #{set.achieved_weight}kg"
@@ -36,9 +33,7 @@
             %li
               = "Target Weight: #{set.suggested_weight}kg"
 
-          -unless set.rest_period.blank?
-            %li
-              = "Rest: #{set.rest_period}s"
+
           -unless set.notes.blank?
             %li
               Notes: &ldquo;
@@ -55,3 +50,4 @@
       = button_to 'All Workouts', workouts_path, method: :get, class: "btn btn-primary btn-lg full_width"
     = link_to 'Edit', edit_workout_path(@workout), class: "btn btn-default btn-lg half_width"
     = link_to "Copy", duplicate_workout_path(@workout), method: :put, class: "btn btn-warning btn-lg half_width"
+    %br

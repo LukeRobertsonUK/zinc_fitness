@@ -14,7 +14,12 @@
 .half_width {
   width: 30%;
   margin-top: 0.5em
+}
 
+.save_button {
+  display: block;
+  margin: auto;
+  margin-top: 0.5em;
 }
 
 .field {
@@ -43,7 +48,6 @@ ul.exercise_set li {
 .exercise_set_header {
   font-weight: bold;
   margin: 0px;
-  border-bottom: 3px solid #eeeeee;
   margin-top: 1em;
 
 }
@@ -54,16 +58,16 @@ ul.exercise_set li {
 }
 
 .notes_entry {
-  width: 20em;
-  margin-left: 0.3em;
+  width: 86%;
+
 }
 
 
 .complete_form {
-  display: inline-block;
+  display: block;
   margin-right: 0.3em;
-  padding-right: 0.1em;
   margin-top: 0.3em;
-  padding-left: 0.2em
+  padding-left: 0.5em;
+  width: 100%;
 
 }
