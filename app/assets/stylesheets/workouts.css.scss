@@ -4,6 +4,8 @@
 
 .button_center {
   text-align: center;
+  padding-top: 1em;
+
 }
 
 .full_width {
@@ -54,7 +56,7 @@ ul.exercise_set li {
 
 .weight_entry {
   width: 5em;
-  margin-left: 0.3em;
+  // margin-left: 0.3em;
 }
 
 .notes_entry {
@@ -64,11 +66,13 @@ ul.exercise_set li {
 
 .form_label {
   font-weight: normal;
-  background: #eeeeee;
+  // background: #eeeeee;
   border-radius: 3px;
   padding: 0.1em;
   padding-left: 0.2em;
   padding-right: 0.2em;
+  width: 6em;
+  text-align: right;
 }
 
 .complete_form {
