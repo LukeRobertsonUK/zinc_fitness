@@ -48,6 +48,7 @@
       = button_to 'My Workouts', user_path(current_user), method: :get, class: "btn btn-primary btn-lg full_width"
     -else
       = button_to 'All Workouts', workouts_path, method: :get, class: "btn btn-primary btn-lg full_width"
-    = link_to 'Edit', edit_workout_path(@workout), class: "btn btn-default btn-lg half_width"
-    = link_to "Copy", duplicate_workout_path(@workout), method: :put, class: "btn btn-warning btn-lg half_width"
+    .edit_copy
+      = link_to 'Edit', edit_workout_path(@workout), class: "btn btn-default btn-lg half_width"
+      = link_to "Copy", duplicate_workout_path(@workout), method: :post, class: "btn btn-warning btn-lg half_width"
     %br

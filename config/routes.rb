@@ -4,12 +4,6 @@ ZincFitnessApp::Application.routes.draw do
 
 
 
-  resources :workouts do
-    member do
-      post 'duplicate', to: "workouts#duplicate"
-      get 'complete', to: "workouts#complete"
-    end
-  end
 
 
   resources :exercise_sets
@@ -22,6 +16,15 @@ ZincFitnessApp::Application.routes.draw do
 
    get '/users', to: "users#index", as: 'users'
   get '/users/:id', to: "users#show", as: 'user'
+
+
+  resources :workouts do
+    member do
+      post 'duplicate', to: "workouts#duplicate"
+      get 'complete', to: "workouts#complete"
+    end
+  end
+
 
   root to: "workouts#index"
 

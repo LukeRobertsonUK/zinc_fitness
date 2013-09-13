@@ -99,7 +99,6 @@ class WorkoutsController < ApplicationController
     end
     @duplicate.save!
 
-
     redirect_to workouts_path
   end
 
