@@ -7,12 +7,12 @@
     -if exercise_set_form.object.weight_required == true
       .field.complete_form
         - if exercise_set_form.object.suggested_weight.blank?
-          = exercise_set_form.label :achieved_weight, "Weight (kg):"
+          = exercise_set_form.label :achieved_weight, "Weight (kg):", class: "form_label"
         - else
-          = exercise_set_form.label :achieved_weight, "Weight (target #{exercise_set_form.object.suggested_weight}kg):"
+          = exercise_set_form.label :achieved_weight, "Weight (target #{exercise_set_form.object.suggested_weight}kg):", class: "form_label"
         =exercise_set_form.number_field :achieved_weight, step: 0.5, class: "weight_entry"
     .field.complete_form
-      =exercise_set_form.label :notes, "Notes:"
+      =exercise_set_form.label :notes, "Notes:", class: "form_label"
       =exercise_set_form.text_field :notes, class: "notes_entry"
 
   -else
