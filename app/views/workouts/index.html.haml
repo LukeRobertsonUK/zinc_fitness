@@ -1,34 +1,34 @@
 = link_to 'New Workout', new_workout_path, class: "btn btn-info"
-
-%h1 Listing workouts
-%table
-  %tr
-    %th Description
-    %th Due date
-    %th User
-    %th
-    %th
-    %th
-  - @workouts.each do |workout|
-    %tr
-      %td= workout.description
-      %td= workout.due_date
-      %td= workout.user.full_name
-      %td= link_to 'Show', workout, class: "btn btn-primary btn-xs"
-      %td= link_to 'Edit', edit_workout_path(workout),class: "btn btn-default btn-xs"
-      %td= link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
-
-%h1 templates
-%table
-  %tr
-    %th Description
-    %th
-    %th
-    %th
-  - @templates.each do |workout|
-    %tr
-      %td= workout.description
-      %td= link_to 'Show', workout,  class: "btn btn-primary btn-xs"
-      %td= link_to 'Edit', edit_workout_path(workout), class: "btn btn-default btn-xs"
-      %td= link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
-%br
+.row
+  .col-md-6
+    %h1 Listing workouts
+    %table
+      %tr
+        %th Description
+        %th Due date
+        %th User
+        %th
+        %th
+        %th
+      - @workouts.each do |workout|
+        %tr
+          %td= workout.description
+          %td= workout.due_date
+          %td= workout.user.full_name
+          %td= link_to 'Show', workout, class: "btn btn-primary btn-xs"
+          %td= link_to 'Edit', edit_workout_path(workout),class: "btn btn-default btn-xs"
+          %td= link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
+  .col-md-6
+    %h1 templates
+    %table
+      %tr
+        %th Description
+        %th
+        %th
+        %th
+      - @templates.each do |workout|
+        %tr
+          %td= workout.description
+          %td= link_to 'Show', workout,  class: "btn btn-primary btn-xs"
+          %td= link_to 'Edit', edit_workout_path(workout), class: "btn btn-default btn-xs"
+          %td= link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"

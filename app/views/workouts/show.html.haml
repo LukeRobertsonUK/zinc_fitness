@@ -1,57 +1,57 @@
-%h2
-  = @workout.description
-%h3
-  - if @workout.user
-    = @workout.user.full_name
-  - else
-    Template
+.row
+  .col-md-7
+    %h2
+      = @workout.description
+    %h3
+      - if @workout.user
+        = @workout.user.full_name
+      - else
+        Template
 
-%p
-  - if @workout.due_date
-    Due date:
-    = @workout.due_date.to_formatted_s(:long_ordinal)
+    %p
+      - if @workout.due_date
+        Due date:
+        = @workout.due_date.to_formatted_s(:long_ordinal)
 
-%h3
-  Sets
-- @workout.exercise_sets.each do |set|
-  -if set.exercise
-    %h4.exercise_set_header
-      = set.to_string
-    %ul.exercise_set
-      -unless (set.distance.blank? || set.set_type == "Distance")
-        %li
-          = "Distance: #{set.distance}m"
-      -unless (set.time.blank? || set.set_type == "Time Interval")
-        %li
-          = "Interval: #{set.time}s"
-      -unless (set.set_type == "Resistance" || set.reps.blank?)
-        %li
-          = "Reps: #{set.reps}"
-      -unless set.achieved_weight.blank?
-        %li
-          = "Achieved Weight: #{set.achieved_weight}kg"
-      -unless (set.suggested_weight.blank? || set.achieved_weight)
-        %li
-          = "Target Weight: #{set.suggested_weight}kg"
+    %h3
+      Sets
+    - @workout.exercise_sets.each do |set|
+      -if set.exercise
+        %h4.exercise_set_header
+          = set.to_string
+        %ul.exercise_set
+          -unless (set.distance.blank? || set.set_type == "Distance")
+            %li
+              = "Distance: #{set.distance}m"
+          -unless (set.time.blank? || set.set_type == "Time Interval")
+            %li
+              = "Interval: #{set.time}s"
+          -unless (set.set_type == "Resistance" || set.reps.blank?)
+            %li
+              = "Reps: #{set.reps}"
+          -unless set.achieved_weight.blank?
+            %li
+              = "Achieved Weight: #{set.achieved_weight}kg"
+          -unless (set.suggested_weight.blank? || set.achieved_weight)
+            %li
+              = "Target Weight: #{set.suggested_weight}kg"
 
-      -unless set.rest_period.blank?
-        %li
-          = "Rest: #{set.rest_period}s"
-      -unless set.notes.blank?
-        %li
-          Notes: &ldquo;
-          ="#{set.notes}"
-          &rdquo;
-  -else
-    %br
-
-
-
-
-= link_to 'Edit', edit_workout_path(@workout)
-|
-= link_to 'Back', workouts_path
-
-= button_to "Clone", duplicate_workout_path(@workout), class: "btn btn-warning"
-- if @workout.user
-  = button_to "Smash It!", complete_workout_path(@workout), method: :get, class: "btn btn-success"
+          -unless set.rest_period.blank?
+            %li
+              = "Rest: #{set.rest_period}s"
+          -unless set.notes.blank?
+            %li
+              Notes: &ldquo;
+              ="#{set.notes}"
+              &rdquo;
+      -else
+        %br
+  .col-md-5.button_center
+    - if @workout.user
+      = button_to "Smash It!", complete_workout_path(@workout), method: :get, class: "btn btn-success btn-lg full_width"
+    - if @workout.user
+      = button_to 'My Workouts', user_path(current_user), method: :get, class: "btn btn-primary btn-lg full_width"
+    -else
+      = button_to 'All Workouts', workouts_path, method: :get, class: "btn btn-primary btn-lg full_width"
+    = link_to 'Edit', edit_workout_path(@workout), class: "btn btn-default btn-lg half_width"
+    = link_to "Copy", duplicate_workout_path(@workout), method: :put, class: "btn btn-warning btn-lg half_width"
