@@ -1,23 +1,29 @@
 = link_to 'New Workout', new_workout_path, class: "btn btn-info"
 .row
   .col-md-6
-    %h1 Listing workouts
-    %table
-      %tr
-        %th Description
-        %th Due date
-        %th User
-        %th
-        %th
-        %th
+    %h1 Client Workouts
+    %ul
       - @workouts.each do |workout|
-        %tr
-          %td= workout.description
-          %td= workout.due_date
-          %td= workout.user.full_name
-          %td= link_to 'Show', workout, class: "btn btn-primary btn-xs"
-          %td= link_to 'Edit', edit_workout_path(workout),class: "btn btn-default btn-xs"
-          %td= link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
+        %li
+          %h4
+            = workout.description
+          %p
+            = "Created for #{workout.user.full_name} on #{workout.created_at.to_formatted_s(:long_ordinal)}"
+          %p
+            = "Includes: #{list_exercises(workout)}"
+
+          = link_to 'Show', workout, class: "btn btn-primary btn-xs"
+          = link_to 'Edit', edit_workout_path(workout),class: "btn btn-default btn-xs"
+          = link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
+          = link_to "Copy", duplicate_workout_path(workout), method: :post, class: "btn btn-warning btn-xs"
+
+
+
+
+
+
+
+
   .col-md-6
     %h1 templates
     %table
@@ -32,3 +38,4 @@
           %td= link_to 'Show', workout,  class: "btn btn-primary btn-xs"
           %td= link_to 'Edit', edit_workout_path(workout), class: "btn btn-default btn-xs"
           %td= link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
+          %td= link_to "Copy", duplicate_workout_path(workout), method: :post, class: "btn btn-warning btn-xs"

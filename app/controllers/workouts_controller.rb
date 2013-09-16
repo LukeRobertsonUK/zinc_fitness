@@ -1,4 +1,6 @@
 class WorkoutsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /workouts
   # GET /workouts.json
   def index

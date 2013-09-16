@@ -12,6 +12,11 @@ class User < ActiveRecord::Base
   has_many :workouts
   has_many :exercise_sets, through: :workouts
 
+  def role?(role)
+    self.role == role
+  end
+
+
   def full_name
     "#{first_name} #{last_name}"
   end

@@ -19,7 +19,8 @@
       - if current_user
         .collapse.navbar-collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav
-            %li.active
+            %li
+              = link_to "My Workouts", user_path(current_user)
             %li
               = link_to 'Exercises', exercises_path
             %li

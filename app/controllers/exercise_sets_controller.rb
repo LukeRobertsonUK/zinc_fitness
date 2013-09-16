@@ -1,4 +1,5 @@
 class ExerciseSetsController < ApplicationController
+  load_and_authorize_resource
   # GET /exercise_sets
   # GET /exercise_sets.json
   def index

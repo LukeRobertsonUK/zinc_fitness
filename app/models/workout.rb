@@ -6,6 +6,7 @@ class Workout < ActiveRecord::Base
   has_many :exercises, through: :exercise_sets
   before_destroy :destroy_exercise_sets
   accepts_nested_attributes_for :exercise_sets, allow_destroy: true
+  default_scope order('created_at DESC' )
 
   amoeba do
     enable
