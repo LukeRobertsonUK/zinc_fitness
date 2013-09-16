@@ -26,6 +26,10 @@
                 %li= msg
 
       = render 'complete_fields', f: f
+      -unless @workout.completed
+        .field
+          =f.label :completed, 'Mark Workout Completed?'
+          =f.check_box :completed
     .col-md-5.button_center
       .actions
         = f.submit "Save it!", class: "btn btn-danger btn-lg full_width"

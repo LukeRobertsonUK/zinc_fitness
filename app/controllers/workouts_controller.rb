@@ -60,6 +60,8 @@ class WorkoutsController < ApplicationController
   def update
     @workout = Workout.find(params[:id])
 
+    @workout.mark_completed if (params[:workout][:completed].to_i == 1)
+
     respond_to do |format|
       if @workout.update_attributes(params[:workout])
         format.html { redirect_to @workout, notice: 'Workout was successfully updated.' }
@@ -96,6 +98,7 @@ class WorkoutsController < ApplicationController
       set.suggested_weight = nil
       set.achieved_weight = nil
       set.notes = nil
+
     end
     @duplicate.save!
 

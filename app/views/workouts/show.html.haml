@@ -43,7 +43,10 @@
         %br
   .col-md-5.button_center
     - if @workout.user
-      = button_to "Smash It!", complete_workout_path(@workout), method: :get, class: "btn btn-success btn-lg full_width"
+      - if @workout.completed
+        = button_to "Review", complete_workout_path(@workout), method: :get, class: "btn btn-success btn-lg full_width"
+      -else
+        = button_to "Smash It!", complete_workout_path(@workout), method: :get, class: "btn btn-success btn-lg full_width"
     - if @workout.user
       = button_to 'My Workouts', user_path(current_user), method: :get, class: "btn btn-primary btn-lg full_width"
     -else

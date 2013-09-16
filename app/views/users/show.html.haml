@@ -1,0 +1,26 @@
+%h2
+  = @user.full_name
+
+%h3
+  Outstanding Workouts
+%ul
+  -@outstanding_workouts.each do |workout|
+    %li
+      =workout.description
+      = "Due on #{workout.due_date.to_formatted_s(:long_ordinal)}"
+      = link_to "View", workout_path(workout)
+
+%h3
+  Completed Workouts
+%ul
+  -@completed_workouts.each do |workout|
+    %li
+      =workout.description
+      = "Completed on #{workout.completion_date.to_formatted_s(:long_ordinal)}"
+      = link_to "View", workout_path(workout)
+
+%h3 Maximums
+%ul
+  - @grouped_exercises.each do |key, value|
+    %li
+      ="#{key}: #{value}kg"
