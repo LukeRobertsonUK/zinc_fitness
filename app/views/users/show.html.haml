@@ -1,26 +1,41 @@
 %h2
   = @user.full_name
-
-%h3
-  Outstanding Workouts
-%ul
-  -@outstanding_workouts.each do |workout|
-    %li
-      =workout.description
-      = "Due on #{workout.due_date.to_formatted_s(:long_ordinal)}"
-      = link_to "View", workout_path(workout)
-
-%h3
-  Completed Workouts
-%ul
-  -@completed_workouts.each do |workout|
-    %li
-      =workout.description
-      = "Completed on #{workout.completion_date.to_formatted_s(:long_ordinal)}"
-      = link_to "View", workout_path(workout)
-
-%h3 Maximums
-%ul
-  - @grouped_exercises.each do |key, value|
-    %li
-      ="#{key}: #{value}kg"
+.row
+  .col-md-4
+    %h3
+      Outstanding Workouts
+    %ul.workout_list
+      -@outstanding_workouts.each do |workout|
+        %li
+          %h5
+            =workout.description
+          %p
+            = list_exercises(workout)
+          %p.completion
+            - if workout.due_date < Date.today
+              = "Overdue: #{workout.due_date.to_formatted_s(:long_ordinal)}"
+            -else
+              = "Due: #{workout.due_date.to_formatted_s(:long_ordinal)}"
+          = link_to "View", workout_path(workout), class: "btn btn-primary btn-xs "
+    = paginate @outstanding_workouts, param_name: 'page_2'
+  .col-md-4
+    %h3
+      Completed Workouts
+    %ul.workout_list
+      -@completed_workouts.each do |workout|
+        %li
+          %h5
+            = workout.description
+          %p
+            = list_exercises(workout)
+          %p.completion
+            = "Completed: #{workout.completion_date.to_formatted_s(:long_ordinal)}"
+          = link_to "View", workout_path(workout),  class: "btn btn-primary btn-xs "
+    = paginate @completed_workouts
+  .col-md-4
+    %h3 Maximums
+    %ul
+      - @grouped_exercises.each do |key, value|
+        %li
+          %p
+            ="#{key}: #{value}kg"

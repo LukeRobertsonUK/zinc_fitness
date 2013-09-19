@@ -86,3 +86,60 @@ ul.exercise_set li {
   width: 100%;
 
 }
+
+ul.workout_list {
+  padding: 0px;
+}
+
+ul.workout_list li {
+  list-style: none;
+  padding: 0.25em;
+  position: relative;
+  border: 2px solid #eeeeee;
+  border-radius: 2px;
+  margin-bottom: 0.25em;
+
+}
+
+ul.workout_list p {
+  font-size: 0.8em;
+  margin: 0;
+}
+
+ul.workout_list p.completion {
+
+  font-style: italic;
+
+}
+
+
+ul.workout_list h5 {
+  font-weight: bold;
+  margin-bottom: 0.25em;
+  margin-top: 0;
+  padding-right: 2.5em;
+
+}
+
+ul.workout_list li .btn {
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+}
+
+.pages {
+  display: block;
+  width: 100%;
+  position: relative;
+  height: 1em;
+}
+
+.prev_page {
+  position: absolute;
+  left: 0
+}
+
+.next_page {
+  position:absolute;
+  right: 0
+}

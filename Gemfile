@@ -14,6 +14,7 @@ gem 'devise'
 gem 'haml'
 gem 'aasm'
 gem "amoeba"
+gem 'bootstrap-kaminari-views'
 
 
 
