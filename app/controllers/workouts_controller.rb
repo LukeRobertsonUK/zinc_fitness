@@ -4,8 +4,11 @@ class WorkoutsController < ApplicationController
   # GET /workouts
   # GET /workouts.json
   def index
-    @workouts = Workout.where(user_id: !nil)
-    @templates = Workout.where(user_id: nil)
+    @q = Workout.where(user_id: !nil).search(params[:q])
+    @workouts = @q.result(distinct: true).page(params[:page_2])
+
+    @r = Workout.where(user_id: nil).search(params[:q])
+    @templates = @r.result(distinct: true).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
