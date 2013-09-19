@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$primary: rgb(0, 126, 254);
+$default: rgb(34,34,34);
+$success: rgb(63,182,24);
+$warning: rgb(255,117,24);
+$danger: rgb(255, 0, 57);
+$info: rgb(153, 84, 187);
+$danger_light: rgb(255,90,126);
+$success_light: rgb(130,208,105);
+$default_light: rgb(112,112,112);
+$info_light: rgb(189,144,211);
+
+
 .button_center {
   text-align: center;
   padding-top: 1em;
@@ -96,18 +108,20 @@ ul.workout_list li {
   padding: 0.25em;
   position: relative;
   border: 2px solid #eeeeee;
-  border-radius: 2px;
+  border-radius: 4px;
   margin-bottom: 0.25em;
+  color: $default_light
 
 }
 
 ul.workout_list p {
   font-size: 0.8em;
   margin: 0;
+
 }
 
 ul.workout_list p.completion {
-
+  font-weight: bold;
   font-style: italic;
 
 }
@@ -143,3 +157,34 @@ ul.workout_list li .btn {
   position:absolute;
   right: 0
 }
+
+li.overdue {
+  border: 1px solid $danger_light !important;
+
+}
+
+li.due {
+  border: 1px solid $success_light !important;
+}
+
+li.overdue p.completion {
+  color: $danger;
+}
+
+li.due p.completion {
+  color: $success;
+}
+
+
+
+
+
+li.completed {
+  border: 1px solid $info_light !important;
+ }
+
+li.completed p.completion {
+  color: $info;
+}
+
+

@@ -6,7 +6,7 @@
       Outstanding Workouts
     %ul.workout_list
       -@outstanding_workouts.each do |workout|
-        %li
+        %li{ class: (workout.due_date < Date.today ? "overdue" : "due")}
           %h5
             =workout.description
           %p
@@ -23,7 +23,7 @@
       Completed Workouts
     %ul.workout_list
       -@completed_workouts.each do |workout|
-        %li
+        %li.completed
           %h5
             = workout.description
           %p
