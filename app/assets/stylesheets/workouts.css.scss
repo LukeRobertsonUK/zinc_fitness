@@ -107,10 +107,10 @@ ul.workout_list li {
   list-style: none;
   padding: 0.25em;
   position: relative;
-  border: 2px solid #eeeeee;
+  border: 1px solid $default_light;
   border-radius: 4px;
   margin-bottom: 0.25em;
-  color: $default_light
+  // color: $default_light
 
 }
 
@@ -123,15 +123,26 @@ ul.workout_list p {
 ul.workout_list p.completion {
   font-weight: bold;
   font-style: italic;
+  text-align: right;
 
 }
 
 
-ul.workout_list h5 {
+ul.workout_list p.created {
   font-weight: bold;
+  font-style: italic;
+
+
+}
+
+
+
+ul.workout_list h5 {
+
   margin-bottom: 0.25em;
   margin-top: 0;
   padding-right: 2.5em;
+  font-weight: bold;
 
 }
 
@@ -187,4 +198,42 @@ li.completed p.completion {
   color: $info;
 }
 
+ul.maximums {
+  padding-left: 0px;
+  border: 1px solid $primary;
+  padding: 0.25em;
+   border-radius: 4px;
+   // min-height: 22em;
 
+}
+
+ul.maximums li {
+  list-style: none;
+
+
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.workout_heading {
+  position: relative;
+}
+
+.new_workout {
+  position: absolute;
+  right: 0;
+}
+
+.not_corner {
+  position: relative !important;
+}
+
+.links {
+  text-align: right;
+  margin-bottom: 0.25em;
+}
+
+p.admin_workout_description {
+  font-size: 0.8em;
+  font-weight: bold;
+}

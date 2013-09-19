@@ -1,41 +1,32 @@
-= link_to 'New Workout', new_workout_path, class: "btn btn-info"
+%h2.workout_heading
+  Workouts:
+  = link_to 'New Workout', new_workout_path, class: "btn btn-info new_workout"
 .row
   .col-md-6
-    %h1 Client Workouts
-    %ul
-      - @workouts.each do |workout|
+    %h3 Templates
+    %ul.workout_list
+      - @templates.each do |workout|
         %li
-          %h4
-            = workout.description
-          %p
-            = "Created for #{workout.user.full_name} on #{workout.created_at.to_formatted_s(:long_ordinal)}"
-          %p
-            = "Includes: #{list_exercises(workout)}"
-
-          = link_to 'Show', workout, class: "btn btn-primary btn-xs"
-          = link_to 'Edit', edit_workout_path(workout),class: "btn btn-default btn-xs"
-          = link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
-          = link_to "Copy", duplicate_workout_path(workout), method: :post, class: "btn btn-warning btn-xs"
-
-
-
-
-
-
-
+          %p.admin_workout_description
+            = "#{workout.description}: #{list_exercises(workout)}"
+          .links
+            = link_to 'View', workout,  class: "btn btn-primary btn-xs not_corner"
+            = link_to 'Edit', edit_workout_path(workout), class: "btn btn-default btn-xs not_corner"
+            = link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs not_corner"
+            = link_to "Copy", duplicate_workout_path(workout), method: :post, class: "btn btn-warning btn-xs not_corner"
 
   .col-md-6
-    %h1 templates
-    %table
-      %tr
-        %th Description
-        %th
-        %th
-        %th
-      - @templates.each do |workout|
-        %tr
-          %td= workout.description
-          %td= link_to 'Show', workout,  class: "btn btn-primary btn-xs"
-          %td= link_to 'Edit', edit_workout_path(workout), class: "btn btn-default btn-xs"
-          %td= link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
-          %td= link_to "Copy", duplicate_workout_path(workout), method: :post, class: "btn btn-warning btn-xs"
+    %h3 Client Workouts
+    %ul.workout_list
+      - @workouts.each do |workout|
+        %li
+          %p.admin_workout_description
+            = "#{workout.description}: #{list_exercises(workout)}"
+          %p
+            = "Created for #{workout.user.full_name}, #{workout.created_at.to_formatted_s(:long_ordinal)}"
+          .links
+            = link_to 'View', workout, class: "btn btn-primary btn-xs not_corner"
+            = link_to 'Edit', edit_workout_path(workout),class: "btn btn-default btn-xs not_corner"
+            = link_to 'Delete', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs not_corner"
+            = link_to "Copy", duplicate_workout_path(workout), method: :post, class: "btn btn-warning btn-xs not_corner"
+

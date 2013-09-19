@@ -1,9 +1,9 @@
 %h2
-  = @user.full_name
+  = "My Workouts: #{@user.full_name}"
 .row
   .col-md-4
     %h3
-      Outstanding Workouts
+      Outstanding
     %ul.workout_list
       -@outstanding_workouts.each do |workout|
         %li{ class: (workout.due_date < Date.today ? "overdue" : "due")}
@@ -18,9 +18,10 @@
               = "Due: #{workout.due_date.to_formatted_s(:long_ordinal)}"
           = link_to "View", workout_path(workout), class: "btn btn-primary btn-xs "
     = paginate @outstanding_workouts, param_name: 'page_2'
+
   .col-md-4
     %h3
-      Completed Workouts
+      Completed
     %ul.workout_list
       -@completed_workouts.each do |workout|
         %li.completed
@@ -32,10 +33,11 @@
             = "Completed: #{workout.completion_date.to_formatted_s(:long_ordinal)}"
           = link_to "View", workout_path(workout),  class: "btn btn-primary btn-xs "
     = paginate @completed_workouts
+
   .col-md-4
     %h3 Maximums
-    %ul
+    %ul.maximums
       - @grouped_exercises.each do |key, value|
         %li
-          %p
-            ="#{key}: #{value}kg"
+
+          ="#{key}: #{value}kg"
