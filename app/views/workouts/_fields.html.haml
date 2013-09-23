@@ -12,6 +12,10 @@
     = exercise_set_form.label :reps, "Number of Reps"
     %br
     = exercise_set_form.number_field :reps
+  .field
+    = exercise_set_form.label :rest_period, "Rest Period (s)"
+    %br
+    = exercise_set_form.number_field :rest_period
   .cardio_fields
     .field.distance
       = exercise_set_form.label :distance, "Distance (m)"
@@ -31,14 +35,8 @@
       %br
       =exercise_set_form.text_field :suggested_weight
 
-  .field
-    = exercise_set_form.label :rest_period, "Rest Period (s)"
-    %br
-    = exercise_set_form.number_field :rest_period
-  .field
-    =exercise_set_form.label :notes
-    %br
-    =exercise_set_form.text_field :notes
+
+
   .field
     = exercise_set_form.link_to_remove 'Remove'
   %br

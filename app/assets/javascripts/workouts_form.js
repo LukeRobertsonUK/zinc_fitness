@@ -84,16 +84,18 @@ var setTypeChange = function(selector){
       selector.parent().parent().children('.resistance_fields').animate({
         height: "toggle",
         opacity: 1
-      }, 150, function(){
-
-      })
+      }, 150)
     };
 
      if(selector.parent().parent().children('.cardio_fields').css('display') !== 'none'){
       selector.parent().parent().children('.cardio_fields').animate({
         height: "toggle",
         opacity: 1
-      }, 150)
+      }, 150, function(){
+        selector.parent().parent().children('.cardio_fields').children('.distance').css({display: 'none'});
+        selector.parent().parent().children('.cardio_fields').children('.interval').css({display: 'none'});
+
+      })
     }
 
 
