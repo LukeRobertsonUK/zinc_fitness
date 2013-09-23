@@ -1,43 +1,35 @@
 = f.fields_for :exercise_sets do |exercise_set_form|
-  .field
-    = exercise_set_form.label :exercise
-    %br
-    = exercise_set_form.collection_select :exercise_id, Exercise.all, :id, :name, {include_blank: "-- Select --"}
-  .field
-    = exercise_set_form.label :set_type
-    %br
-    = exercise_set_form.select(:set_type, ["Resistance", "Time Interval", "Distance"],  {include_blank: "-- Select --"}, {class: "set_type_select"})
-
-  .field
-    = exercise_set_form.label :reps, "Number of Reps"
-    %br
-    = exercise_set_form.number_field :reps
-  .field
-    = exercise_set_form.label :rest_period, "Rest Period (s)"
-    %br
-    = exercise_set_form.number_field :rest_period
-  .cardio_fields
-    .field.distance
-      = exercise_set_form.label :distance, "Distance (m)"
-      %br
-      =exercise_set_form.number_field :distance
-    .field.interval
-      =exercise_set_form.label :time, "Interval (s)"
-      %br
-      =exercise_set_form.number_field :time
-  .resistance_fields
+  .set_box
+    .field.exercise_adder
+      = exercise_set_form.collection_select :exercise_id, Exercise.all, :id, :name, {include_blank: "Select Exercise"}
     .field
-      = exercise_set_form.label :weight_required, "Weight Required?"
-      %br
-      = exercise_set_form.check_box :weight_required
-    .field
-      = exercise_set_form.label :suggested_weight, "Target Weight (total kg)"
-      %br
-      =exercise_set_form.text_field :suggested_weight
+      = exercise_set_form.select(:set_type, ["Resistance", "Time Interval", "Distance"],  {include_blank: "Select Type of Set"}, {class: "set_type_select"})
+    .reps_and_rest
+      .field
+        = exercise_set_form.label :reps, "Reps:", class: "workout_creation_label"
+        = exercise_set_form.number_field :reps, class: "three_digit_entry"
+      .field
+        = exercise_set_form.label :rest_period, "Rest (secs):", class: "workout_creation_label"
+        = exercise_set_form.number_field :rest_period, class: "three_digit_entry"
 
 
+    .cardio_fields
+      .field.distance
+        = exercise_set_form.label :distance, "Distance (m)", class: "workout_creation_label"
+        =exercise_set_form.number_field :distance, class: "four_digit_entry"
+      .field.interval
+        =exercise_set_form.label :time, "Interval (s)", class: "workout_creation_label"
+        =exercise_set_form.number_field :time, class: "four_digit_entry"
+    .resistance_fields
+      .field
+        = exercise_set_form.select(:weight_required, [['Unweighted', false], ["Weighted",true]])
+      .field
+        = exercise_set_form.label :suggested_weight, "Target (total kg)", class: "workout_creation_label"
+        =exercise_set_form.number_field :suggested_weight, step: 0.5, class: "four_digit_entry"
 
-  .field
-    = exercise_set_form.link_to_remove 'Remove'
+
+    = exercise_set_form.link_to_remove 'Remove', class: "btn btn-danger btn-xs"
+
+
   %br
-= f.link_to_add 'Add a Set', :exercise_sets
+= f.link_to_add 'Add a Set', :exercise_sets, class: "btn btn-success btn-xs"

@@ -240,7 +240,8 @@ p.admin_workout_description {
 
 .cardio_fields {
   display: none;
-  height: 4em;
+  height: 2em;
+  margin-top: 0.25em;
 }
 
 .distance {
@@ -249,9 +250,52 @@ p.admin_workout_description {
 
 .interval {
   display: none;
+
 }
 
 .resistance_fields {
   display: none;
-  height: 4em;
+  height: 2em;
+  margin-top: 0.25em;
+}
+
+.three_digit_entry {
+  width: 3.5em;
+
+  font-size: 0.8em;
+}
+
+.four_digit_entry {
+  width: 4.5em;
+  font-size: 0.8em;
+
+}
+
+.reps_and_rest {
+  display: inline-block;
+  margin-top: 0.25em;
+}
+
+.set_box {
+  border: 1px solid black;
+  padding: 0.25em;
+  padding-right: 4em;
+  border-radius: 4px;
+  position: relative;
+}
+
+.set_box .btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.25em;
+
+}
+
+.workout_creation_label {
+  font-size: 0.8em;
+}
+
+.exercise_adder {
+  margin-top: 0.25em;
 }
