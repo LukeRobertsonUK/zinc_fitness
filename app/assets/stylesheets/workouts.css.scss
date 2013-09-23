@@ -219,7 +219,7 @@ ul.maximums li {
   position: relative;
 }
 
-.new_workout {
+.new_workout_button {
   position: absolute;
   right: 0;
 }
@@ -236,4 +236,22 @@ ul.maximums li {
 p.admin_workout_description {
   font-size: 0.8em;
   font-weight: bold;
+}
+
+.cardio_fields {
+  display: none;
+  height: 4em;
+}
+
+.distance {
+  display: none;
+}
+
+.interval {
+  display: none;
+}
+
+.resistance_fields {
+  display: none;
+  height: 4em;
 }

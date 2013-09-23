@@ -6,28 +6,30 @@
   .field
     = exercise_set_form.label :set_type
     %br
-    = exercise_set_form.select(:set_type, ["Resistance", "Time Interval", "Distance"],  {include_blank: "-- Select --"})
-  .field
-    = exercise_set_form.label :weight_required, "Weight Required?"
-    %br
-    = exercise_set_form.check_box :weight_required
+    = exercise_set_form.select(:set_type, ["Resistance", "Time Interval", "Distance"],  {include_blank: "-- Select --"}, {class: "set_type_select"})
+
   .field
     = exercise_set_form.label :reps, "Number of Reps"
     %br
     = exercise_set_form.number_field :reps
-  .field
-    = exercise_set_form.label :distance, "Distance (m)"
-    %br
-    =exercise_set_form.number_field :distance
-  .field
-    =exercise_set_form.label :time, "Interval (s)"
-    %br
-    =exercise_set_form.number_field :time
-
-  .field
-    = exercise_set_form.label :suggested_weight, "Target Weight (total kg)"
-    %br
-    =exercise_set_form.text_field :suggested_weight
+  .cardio_fields
+    .field.distance
+      = exercise_set_form.label :distance, "Distance (m)"
+      %br
+      =exercise_set_form.number_field :distance
+    .field.interval
+      =exercise_set_form.label :time, "Interval (s)"
+      %br
+      =exercise_set_form.number_field :time
+  .resistance_fields
+    .field
+      = exercise_set_form.label :weight_required, "Weight Required?"
+      %br
+      = exercise_set_form.check_box :weight_required
+    .field
+      = exercise_set_form.label :suggested_weight, "Target Weight (total kg)"
+      %br
+      =exercise_set_form.text_field :suggested_weight
 
   .field
     = exercise_set_form.label :rest_period, "Rest Period (s)"
