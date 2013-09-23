@@ -22,7 +22,7 @@
         =exercise_set_form.number_field :time, class: "four_digit_entry"
     .resistance_fields
       .field
-        = exercise_set_form.select(:weight_required, [['Unweighted', false], ["Weighted",true]])
+        = exercise_set_form.select(:weight_required, [['Unweighted', false], ["Weighted",true]], {class: "exercise_selector"})
       .field
         = exercise_set_form.label :suggested_weight, "Target (total kg)", class: "workout_creation_label"
         =exercise_set_form.number_field :suggested_weight, step: 0.5, class: "four_digit_entry"
