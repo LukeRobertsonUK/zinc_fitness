@@ -1,9 +1,9 @@
 = f.fields_for :exercise_sets do |exercise_set_form|
   .set_box
     .field.exercise_adder
-      = exercise_set_form.collection_select :exercise_id, Exercise.all, :id, :name, {include_blank: "Select Exercise"}
+      = exercise_set_form.collection_select :exercise_id, Exercise.all, :id, :name, {include_blank: "Select Exercise"}, {class: "exercise_selector"}
     .field
-      = exercise_set_form.select(:set_type, ["Resistance", "Time Interval", "Distance"],  {include_blank: "Select Type of Set"}, {class: "set_type_select"})
+      = exercise_set_form.select(:set_type, ["Resistance", "Time Interval", "Distance"],  {include_blank: "Select Set Type"}, {class: "set_type_select"})
     .reps_and_rest
       .field
         = exercise_set_form.label :reps, "Reps:", class: "workout_creation_label"
