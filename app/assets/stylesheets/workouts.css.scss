@@ -259,6 +259,10 @@ p.admin_workout_description {
   margin-top: 0.25em;
 }
 
+.visible {
+  display: block;
+}
+
 .three_digit_entry {
   width: 3.5em;
 
@@ -282,6 +286,7 @@ p.admin_workout_description {
   padding-right: 4em;
   border-radius: 4px;
   position: relative;
+  margin-bottom: 0.5em
 }
 
 .set_box .btn {

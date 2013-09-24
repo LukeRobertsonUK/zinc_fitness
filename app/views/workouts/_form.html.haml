@@ -7,22 +7,27 @@
       %ul
         - @workout.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    = f.label :description
-    %br/
-    = f.text_field :description
-  .field
-    = f.label :due_date
-    %br/
-    = f.date_select :due_date
+  .row
+    .col-md-5
+      .field
+        = f.label :description
+        %br/
+        = f.text_field :description
+      .field
+        = f.label :due_date
+        %br/
+        = f.date_select :due_date
 
-  - unless (@editing && @workout.user)
-    .field
-      = f.label :user_id
-      %br/
-      = f.select(:user_id, User.all.map {|u| [u.full_name, u.id]},  {include_blank: "Template"})
-  %h3 Sets
-  = render 'fields', f: f
+      - unless (@editing && @workout.user)
+        .field
+          = f.label :user_id
+          %br/
+          = f.select(:user_id, User.all.map {|u| [u.full_name, u.id]},  {include_blank: "Template"})
 
-  .actions
-    = f.submit
+
+
+    .col-md-7.button_center
+      = render 'fields', f: f
+      .actions
+        = f.submit class: "btn btn-danger btn-lg full_width"
+      = button_to 'Back', workouts_path, method: :get, class: "btn btn-primary btn-lg full_width"

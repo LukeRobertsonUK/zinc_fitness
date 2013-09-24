@@ -9,7 +9,11 @@ var setTypeChange = function(selector){
       selector.parent().parent().children('.resistance_fields').animate({
          height: "toggle",
           opacity: 1
-      }, 150)
+      }, 150, function(){
+        selector.parent().parent().children('.resistance_fields').find('.exercise_selector').val('false');
+        selector.parent().parent().children('.resistance_fields').find('.four_digit_entry').val('');
+
+      })
     }
 
     if(selector.parent().parent().children('.cardio_fields').css('display') === 'none'){
@@ -22,6 +26,7 @@ var setTypeChange = function(selector){
     }else{
 
         selector.parent().parent().children('.cardio_fields').children('.interval').fadeOut(150, function(){
+              selector.parent().parent().children('.cardio_fields').children('.interval').find('.four_digit_entry').val('');
               selector.parent().parent().children('.cardio_fields').children('.distance').fadeIn(150);
             }
           );
@@ -36,7 +41,10 @@ var setTypeChange = function(selector){
       selector.parent().parent().children('.resistance_fields').animate({
          height: "toggle",
           opacity: 1
-      }, 150)
+      }, 150, function(){
+        selector.parent().parent().children('.resistance_fields').find('.exercise_selector').val('false');
+        selector.parent().parent().children('.resistance_fields').find('.four_digit_entry').val('');
+      })
     }
 
     if(selector.parent().parent().children('.cardio_fields').css('display') === 'none'){
@@ -49,6 +57,7 @@ var setTypeChange = function(selector){
     }else{
 
         selector.parent().parent().children('.cardio_fields').children('.distance').fadeOut(150, function(){
+          selector.parent().parent().children('.cardio_fields').children('.distance').find('.four_digit_entry').val('');
           selector.parent().parent().children('.cardio_fields').children('.interval').fadeIn(150);
         });
 
@@ -64,7 +73,9 @@ var setTypeChange = function(selector){
         opacity: 1
       }, 150, function(){
         selector.parent().parent().children('.cardio_fields').children('.distance').css({display: 'none'});
+        selector.parent().parent().children('.cardio_fields').children('.distance').find('.four_digit_entry').val('');
         selector.parent().parent().children('.cardio_fields').children('.interval').css({display: 'none'});
+        selector.parent().parent().children('.cardio_fields').children('.interval').find('.four_digit_entry').val('');
       })
     }
 
@@ -84,7 +95,11 @@ var setTypeChange = function(selector){
       selector.parent().parent().children('.resistance_fields').animate({
         height: "toggle",
         opacity: 1
-      }, 150)
+      }, 150, function(){
+        selector.parent().parent().children('.resistance_fields').find('.exercise_selector').val('false');
+        selector.parent().parent().children('.resistance_fields').find('.four_digit_entry').val('');
+
+      })
     };
 
      if(selector.parent().parent().children('.cardio_fields').css('display') !== 'none'){
@@ -93,8 +108,9 @@ var setTypeChange = function(selector){
         opacity: 1
       }, 150, function(){
         selector.parent().parent().children('.cardio_fields').children('.distance').css({display: 'none'});
+        selector.parent().parent().children('.cardio_fields').children('.distance').find('.four_digit_entry').val('');
         selector.parent().parent().children('.cardio_fields').children('.interval').css({display: 'none'});
-
+        selector.parent().parent().children('.cardio_fields').children('.interval').find('.four_digit_entry').val('');
       })
     }
 
@@ -110,13 +126,16 @@ var setTypeChange = function(selector){
 
 $(function() {
 
-var initial_fields = $('.set_type_select');
-setTypeChange(initial_fields);
+var initialFields = $('.set_type_select');
 
+for(var i =0; i < initialFields.length; i++){
+  setTypeChange(initialFields.eq(i))
+}
 
 $(document).on('nested:fieldAdded', function(event){
   var selector = event.field.find('.set_type_select');
-  setTypeChange(selector);
+
+    setTypeChange(selector);
 })
 
 
