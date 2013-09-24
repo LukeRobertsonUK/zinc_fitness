@@ -1,7 +1,14 @@
 %h2
   = "My Workouts: #{@user.full_name}"
+
+Biggest lifts:
+%ul.maximums
+  - @grouped_exercises.each do |key, value|
+    %li.maximum
+      ="#{key}: #{value}kg"
+
 .row
-  .col-md-4
+  .col-md-6
     %h3
       Outstanding
     %ul.workout_list
@@ -19,7 +26,7 @@
           = link_to "View", workout_path(workout), class: "btn btn-primary btn-xs "
     = paginate @outstanding_workouts, param_name: 'page_2'
 
-  .col-md-4
+  .col-md-6
     %h3
       Completed
     %ul.workout_list
@@ -33,11 +40,3 @@
             = "Completed: #{workout.completion_date.to_formatted_s(:long_ordinal)}"
           = link_to "View", workout_path(workout),  class: "btn btn-primary btn-xs "
     = paginate @completed_workouts
-
-  .col-md-4
-    %h3 Maximums
-    %ul.maximums
-      - @grouped_exercises.each do |key, value|
-        %li
-
-          ="#{key}: #{value}kg"

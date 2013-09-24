@@ -33,4 +33,4 @@
     .col-md-5.button_center
       .actions
         = f.submit "Save it!", class: "btn btn-danger btn-lg full_width"
-        =button_to "Back", workout_path(@workout), method: :get, class: "btn btn-primary btn-lg full_width"
+        =link_to "Back", workout_path(@workout), method: :get, class: "btn btn-primary btn-lg full_width"

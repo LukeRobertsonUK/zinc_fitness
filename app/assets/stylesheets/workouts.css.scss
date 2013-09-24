@@ -14,6 +14,12 @@ $default_light: rgb(112,112,112);
 $info_light: rgb(189,144,211);
 
 
+// body {
+//   background: image_url('brickwall.png');
+
+// }
+
+
 .button_center {
   text-align: center;
   padding-top: 1em;
@@ -96,6 +102,7 @@ ul.exercise_set li {
   padding-left: 1em;
   padding-right: 1em;
   width: 100%;
+  font-size: 0.8em;
 
 }
 
@@ -109,8 +116,8 @@ ul.workout_list li {
   position: relative;
   border: 1px solid $default_light;
   border-radius: 4px;
-  margin-bottom: 0.25em;
-  // color: $default_light
+  margin-bottom: 0.5em;
+  background-color: white;
 
 }
 
@@ -166,7 +173,7 @@ ul.workout_list li .btn {
 
 .next_page {
   position:absolute;
-  right: 0
+  right: 0;
 }
 
 li.overdue {
@@ -200,9 +207,9 @@ li.completed p.completion {
 
 ul.maximums {
   padding-left: 0px;
-  border: 1px solid $primary;
   padding: 0.25em;
-   border-radius: 4px;
+  display: inline-block;
+
    // min-height: 22em;
 
 }
@@ -286,7 +293,8 @@ p.admin_workout_description {
   padding-right: 4em;
   border-radius: 4px;
   position: relative;
-  margin-bottom: 0.5em
+  margin-bottom: 0.5em;
+  text-align: left;
 }
 
 .set_box .btn {
@@ -311,4 +319,38 @@ p.admin_workout_description {
 
 .exercise_selector {
   font-size: 0.8em;
+}
+
+.weight_selector {
+  font-size: 0.8em;
+}
+
+.weight_input_box {
+  display: inline-block;
+}
+
+.force_block {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.search_bar{
+  display: block;
+  text-align: center;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.maximum {
+  display: inline-block;
+  background: #eeeeee;
+  padding: 0.3em;
+}
+
+.exercise_list {
+  padding-left: 0;
+}
+
+.exercise_list li {
+  list-style: none;
 }

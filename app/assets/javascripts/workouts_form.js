@@ -1,3 +1,15 @@
+var weightsNeeded = function(selector){
+  selector.change(function(){
+    if(selector.val() === "false"){
+      selector.parent().parent().children('.weight_input_box').fadeOut(150, function(){
+        selector.parent().parent().children().find('.four_digit_entry').val('');
+      })
+    }else{
+      selector.parent().parent().children('.weight_input_box').fadeIn(150);
+    }
+  })
+}
+
 var setTypeChange = function(selector){
   selector.change(function() {
 
@@ -126,16 +138,31 @@ var setTypeChange = function(selector){
 
 $(function() {
 
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: "yy-mm-dd",
+
+    });
+
+
 var initialFields = $('.set_type_select');
 
 for(var i =0; i < initialFields.length; i++){
   setTypeChange(initialFields.eq(i))
 }
 
-$(document).on('nested:fieldAdded', function(event){
-  var selector = event.field.find('.set_type_select');
+for(var i = 0; i < $('.weight_selector').length; i++){
+  weightsNeeded($('.weight_selector').eq(i));
+}
 
-    setTypeChange(selector);
+
+$(document).on('nested:fieldAdded', function(event){
+  var typeSelector = event.field.find('.set_type_select');
+  var weightSelector = event.field.find('.weight_selector');
+
+  weightsNeeded(weightSelector);
+  setTypeChange(typeSelector);
 })
 
 

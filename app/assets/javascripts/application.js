@@ -14,4 +14,5 @@
 //= require bootstrap.js
 //= require jquery_nested_form
 //= require jquery_ujs
+//= require jquery-ui-1.10.3.custom.js
 //= require_tree .

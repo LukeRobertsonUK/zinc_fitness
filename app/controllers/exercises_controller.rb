@@ -3,7 +3,9 @@ class ExercisesController < ApplicationController
   # GET /exercises
   # GET /exercises.json
   def index
-    @exercises = Exercise.all
+    @q = Exercise.search(params[:q])
+    @exercises = @q.result(distinct: true).page(params[:page])
+
 
     respond_to do |format|
       format.html # index.html.erb

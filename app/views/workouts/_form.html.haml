@@ -9,20 +9,20 @@
           %li= msg
   .row
     .col-md-5
-      .field
+      - unless (@editing && @workout.user)
+        .field.force_block
+          = f.label :user_id, "Client:"
+          = f.select(:user_id, User.all.map {|u| [u.full_name, u.id]},  {include_blank: "Template"})
+      .field.force_block
         = f.label :description
         %br/
         = f.text_field :description
-      .field
+      %div{ id: "due date", class: "field force_block"}
         = f.label :due_date
         %br/
-        = f.date_select :due_date
+        = f.text_field :due_date, class: "datepicker"
 
-      - unless (@editing && @workout.user)
-        .field
-          = f.label :user_id
-          %br/
-          = f.select(:user_id, User.all.map {|u| [u.full_name, u.id]},  {include_blank: "Template"})
+
 
 
 
@@ -30,4 +30,4 @@
       = render 'fields', f: f
       .actions
         = f.submit class: "btn btn-danger btn-lg full_width"
-      = button_to 'Back', workouts_path, method: :get, class: "btn btn-primary btn-lg full_width"
+      = link_to 'Back', workouts_path, method: :get, class: "btn btn-primary btn-lg full_width"

@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require bootstrap.css
+ *= require jquery-ui-1.10.3.custom.css
  *= require_tree .
  */

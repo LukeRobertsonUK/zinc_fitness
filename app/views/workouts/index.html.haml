@@ -3,9 +3,10 @@
   = link_to 'New Workout', new_workout_path, class: "btn btn-info new_workout_button"
 
 =search_form_for @q, :url => url_for(:workouts_controller => "q", :action => "index") do |f|
+  .search_bar
+    =f.text_field :description_or_exercises_name_or_user_first_name_or_user_last_name_cont, class: "search_field"
+    =f.submit "Search", class: "btn btn-success btn-xs"
 
-  =f.text_field :description_or_exercises_name_or_user_first_name_or_user_last_name_cont
-  =f.submit
 
 .row
   .col-md-6

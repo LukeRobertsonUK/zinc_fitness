@@ -1,0 +1,19 @@
+%h2.workout_heading
+  Exercises:
+  = link_to 'New Exercise', new_exercise_path, class: "btn btn-info new_workout_button"
+
+=search_form_for @q, :url => url_for(:exercises_controller => "q", :action => "index") do |f|
+  .search_bar
+    =f.text_field :name_or_description_cont, class: "search_field"
+    =f.submit "Search", class: "btn btn-success btn-xs"
+
+.row
+  .col_md_6
+    %ul.exercise_list
+      - @exercises.each do |exercise|
+        %li
+          = link_to 'View', exercise, class: "btn btn-primary btn-xs "
+          = exercise.name
+          = link_to 'Edit', edit_exercise_path(exercise), class: "btn btn-default btn-xs"
+          = link_to 'Delete', exercise, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs "
+    = paginate @exercises
