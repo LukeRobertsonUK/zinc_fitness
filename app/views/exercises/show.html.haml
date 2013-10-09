@@ -1,0 +1,11 @@
+%p#notice= notice
+
+.row
+  .col-md-7
+    %h2
+      = @exercise.name
+    %p
+      = @exercise.description
+  .col-md-5.button_center
+    = link_to 'All Exercises', exercises_path, class: "btn btn-primary btn-lg full_width"
+    = button_to 'Edit', edit_exercise_path(@exercise), method: :get, class: "btn btn-default btn-lg full_width"

@@ -1,0 +1,25 @@
+= form_for(@exercise) do |f|
+  - if @exercise.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@exercise.errors.count, "error")
+        prohibited this exercise from being saved:
+      %ul
+        - @exercise.errors.full_messages.each do |msg|
+          %li= msg
+  .row
+    .col-md-5
+      .field.force_block
+        = f.label :name
+        %br/
+        = f.text_field :name
+      .field.force_block
+        = f.label :description
+        %br/
+        = f.text_area :description, class: "workout_instructions"
+
+    .col-md-7.button_center
+      .actions
+        =f.submit class: "btn btn-danger btn-lg full_width"
+
+      = link_to 'Back', exercises_path, method: :get, class: "btn btn-primary btn-lg full_width"
