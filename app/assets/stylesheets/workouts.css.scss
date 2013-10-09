@@ -85,7 +85,7 @@ ul.exercise_set li {
 }
 
 .form_label {
-  font-weight: normal;
+  // font-weight: normal;
   background: #eeeeee;
   border-radius: 3px;
   padding: 0.1em;
@@ -177,20 +177,22 @@ ul.workout_list li .btn {
 }
 
 li.overdue {
-  border: 1px solid $danger_light !important;
+  border: 1px solid black !important;
 
 }
 
 li.due {
-  border: 1px solid $success_light !important;
+  border: 1px solid black !important;
 }
 
 li.overdue p.completion {
   color: $danger;
+  font-size: 0.7em;
 }
 
 li.due p.completion {
   color: $success;
+  font-size: 0.7em;
 }
 
 
@@ -198,12 +200,15 @@ li.due p.completion {
 
 
 li.completed {
-  border: 1px solid $info_light !important;
+  border: 1px solid black !important;
  }
 
 li.completed p.completion {
   color: $info;
+  font-size: 0.7em;
 }
+
+
 
 ul.maximums {
   padding-left: 0px;
@@ -353,4 +358,37 @@ p.admin_workout_description {
 
 .exercise_list li {
   list-style: none;
+
+}
+
+.workout_instructions {
+  height: 10em;
+  font-size: 0.8em;
+  max-width: 30em;
+}
+
+.completed_workout_date {
+  color: $info;
+  font-weight: bold;
+}
+
+.overdue_workout_date {
+  color: $danger;
+  font-weight: bold;
+}
+
+.due_workout_date {
+  color: $success;
+  font-weight: bold;
+}
+
+#workout_completed {
+  font-size: 2em;
+}
+
+.mark_workout_completed {
+  font-weight: bold;
+  margin-top: 1em;
+  font-size: 1.25em;
+
 }

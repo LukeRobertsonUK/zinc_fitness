@@ -9,13 +9,21 @@
       - else
         Template
 
-    %p
-      - if @workout.due_date
-        Due date:
-        = @workout.due_date.to_formatted_s(:long_ordinal)
+    - if @workout.due_date
+      - if @workout.completed
+        %p.completed_workout_date
+          = "Completed: #{@workout.completion_date.to_formatted_s(:long_ordinal)}"
+      - else
+        - if @workout.due_date < Date.today
+          %p.overdue_workout_date
+            = "Overdue: #{@workout.due_date.to_formatted_s(:long_ordinal)}"
+        -else
+          %p.due_workout_date
+            = "Due: #{@workout.due_date.to_formatted_s(:long_ordinal)}"
 
-    %h3
-      Sets
+    %p
+      = @workout.instructions
+
     - @workout.exercise_sets.each do |set|
       -if set.exercise
         %h4.exercise_set_header

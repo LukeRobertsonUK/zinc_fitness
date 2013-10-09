@@ -1,12 +1,12 @@
 class Workout < ActiveRecord::Base
 
-  attr_accessible :description, :due_date, :user_id, :exercise_sets_attributes, :completed, :completion_date
+  attr_accessible :description, :due_date, :user_id, :exercise_sets_attributes, :completed, :completion_date, :instructions
   belongs_to :user
   has_many :exercise_sets
   has_many :exercises, through: :exercise_sets
   before_destroy :destroy_exercise_sets
   accepts_nested_attributes_for :exercise_sets, allow_destroy: true
-  default_scope order('created_at DESC' )
+  # default_scope order('created_at DESC' )
 
   amoeba do
     enable

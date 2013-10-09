@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130916160744) do
+ActiveRecord::Schema.define(:version => 20131009121230) do
 
   create_table "exercise_sets", :force => true do |t|
     t.integer  "exercise_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20130916160744) do
     t.datetime "updated_at",      :null => false
     t.boolean  "completed"
     t.datetime "completion_date"
+    t.text     "instructions"
   end
 
   add_index "workouts", ["user_id"], :name => "index_workouts_on_user_id"

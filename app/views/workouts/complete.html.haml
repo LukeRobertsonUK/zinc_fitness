@@ -2,19 +2,27 @@
   = nested_form_for(@workout) do |f|
     .col-md-7
       %h2
-        = "In Progress: #{@workout.description}"
+        = @workout.description
       %h3
         - if @workout.user
           = "Good luck #{@workout.user.first_name}!"
         - else
           Template
 
+      - if @workout.due_date
+        - if @workout.completed
+          %p.completed_workout_date
+            = "Completed: #{@workout.completion_date.to_formatted_s(:long_ordinal)}"
+        - else
+          - if @workout.due_date < Date.today
+            %p.overdue_workout_date
+              = "Overdue: #{@workout.due_date.to_formatted_s(:long_ordinal)}"
+          -else
+            %p.due_workout_date
+              = "Due: #{@workout.due_date.to_formatted_s(:long_ordinal)}"
       %p
-        Due date:
-        = @workout.due_date.to_formatted_s(:long_ordinal)
+        = @workout.instructions
 
-      %h3
-        Sets
 
         - if @workout.errors.any?
           #error_explanation
@@ -27,8 +35,8 @@
 
       = render 'complete_fields', f: f
       -unless @workout.completed
-        .field
-          =f.label :completed, 'Mark Workout Completed?'
+        .field.mark_workout_completed
+          =f.label :completed, 'Workout Complete?'
           =f.check_box :completed
     .col-md-5.button_center
       .actions

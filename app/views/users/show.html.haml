@@ -1,5 +1,5 @@
 %h2
-  = "My Workouts: #{@user.full_name}"
+  = @user.full_name
 
 Biggest lifts:
 %ul.maximums
@@ -10,11 +10,11 @@ Biggest lifts:
 .row
   .col-md-6
     %h3
-      Outstanding
+      Outstanding Workouts
     %ul.workout_list
       -@outstanding_workouts.each do |workout|
         %li{ class: (workout.due_date < Date.today ? "overdue" : "due")}
-          %h5
+          %p.admin_workout_description
             =workout.description
           %p
             = list_exercises(workout)
@@ -28,11 +28,11 @@ Biggest lifts:
 
   .col-md-6
     %h3
-      Completed
+      Completed Workouts
     %ul.workout_list
       -@completed_workouts.each do |workout|
         %li.completed
-          %h5
+          %p.admin_workout_description
             = workout.description
           %p
             = list_exercises(workout)

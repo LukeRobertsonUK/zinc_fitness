@@ -3,7 +3,7 @@ class ExercisesController < ApplicationController
   # GET /exercises
   # GET /exercises.json
   def index
-    @q = Exercise.search(params[:q])
+    @q = Exercise.order('name ASC').search(params[:q])
     @exercises = @q.result(distinct: true).page(params[:page])
 
 

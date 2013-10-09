@@ -4,10 +4,10 @@ class WorkoutsController < ApplicationController
   # GET /workouts
   # GET /workouts.json
   def index
-    @q = Workout.where(user_id: !nil).search(params[:q])
+    @q = Workout.where(user_id: !nil).order('created_at DESC' ).search(params[:q])
     @workouts = @q.result(distinct: true).page(params[:page_2])
 
-    @r = Workout.where(user_id: nil).search(params[:q])
+    @r = Workout.where(user_id: nil).order('created_at DESC' ).search(params[:q])
     @templates = @r.result(distinct: true).page(params[:page])
 
     respond_to do |format|
