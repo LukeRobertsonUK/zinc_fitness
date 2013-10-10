@@ -63,6 +63,8 @@ ul.exercise_set li {
   padding-right: 0.2em;
   padding-left: 0.2em;
   margin-top: 0.3em;
+  font-weight: bold;
+  font-size: 0.8em;
 }
 
 .exercise_set_header {
@@ -212,7 +214,7 @@ li.completed p.completion {
 
 ul.maximums {
   padding-left: 0px;
-  padding: 0.25em;
+
   display: inline-block;
 
    // min-height: 22em;
@@ -348,8 +350,12 @@ p.admin_workout_description {
 
 .maximum {
   display: inline-block;
-  background: #eeeeee;
   padding: 0.3em;
+  border: 1px solid black;
+  border-radius: 4px;
+
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .exercise_list {
@@ -391,4 +397,31 @@ p.admin_workout_description {
   margin-top: 1em;
   font-size: 1.25em;
 
+}
+
+ul.user_list {
+  list-style: none;
+  padding: 0;
+}
+
+ul.exercise_set li.target_weight {
+  color: $danger;
+  background: none;
+  font-weight: normal;
+  font-style: italic;
+}
+
+ul.exercise_set li.achieved_weight {
+  color: $success;
+  background: none;
+  font-weight: normal;
+  font-style: italic;
+}
+
+
+ul.exercise_set li.notes {
+  color: $primary;
+  background: none;
+  font-weight: normal;
+  font-style: italic;
 }

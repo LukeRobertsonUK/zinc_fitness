@@ -1,11 +1,13 @@
 %h2
   = @user.full_name
 
-Biggest lifts:
-%ul.maximums
-  - @grouped_exercises.each do |key, value|
-    %li.maximum
-      ="#{key}: #{value}kg"
+.row
+  .col-md-12
+    %h3 Maximums
+    %ul.maximums
+      - @grouped_exercises.each do |key, value|
+        %li.maximum
+          ="#{key}: #{value}kg"
 
 .row
   .col-md-6

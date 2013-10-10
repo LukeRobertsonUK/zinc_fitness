@@ -22,6 +22,6 @@
             = link_to 'View', exercise_path(exercise), class: "btn btn-primary btn-xs not_corner"
             = link_to 'Edit', edit_exercise_path(exercise), class: "btn btn-default btn-xs not_corner"
             = link_to 'Delete', exercise, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs not_corner "
-      = paginate @exercises
+    = paginate @exercises
 
 
