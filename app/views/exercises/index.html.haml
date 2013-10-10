@@ -1,6 +1,7 @@
 %h2.workout_heading
   Exercises:
-  = link_to 'New Exercise', new_exercise_path, class: "btn btn-info new_workout_button"
+  -if can? :manage, :all
+    = link_to 'New Exercise', new_exercise_path, class: "btn btn-info new_workout_button"
 
 =search_form_for @q, :url => url_for(:exercises_controller => "q", :action => "index") do |f|
   .search_bar
@@ -10,18 +11,21 @@
 .row
 
   .col-md-12
-
-    %ul.workout_list.exercise_list
-      - @exercises.each do |exercise|
-        %li
-          %p.admin_workout_description
-            = exercise.name
-          %p
-            = exercise.description
-          .links
-            = link_to 'View', exercise_path(exercise), class: "btn btn-primary btn-xs not_corner"
-            = link_to 'Edit', edit_exercise_path(exercise), class: "btn btn-default btn-xs not_corner"
-            = link_to 'Delete', exercise, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs not_corner "
-    = paginate @exercises
+    - if @exercises.blank?
+      %p.no_records No Records
+    -else
+      %ul.workout_list.exercise_list
+        - @exercises.each do |exercise|
+          %li
+            %p.admin_workout_description
+              = exercise.name
+            %p
+              = exercise.description
+            .links
+              = link_to 'View', exercise_path(exercise), class: "btn btn-primary btn-xs not_corner"
+              -if can? :manage, :all
+                = link_to 'Edit', edit_exercise_path(exercise), class: "btn btn-default btn-xs not_corner"
+                = link_to 'Delete', exercise, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs not_corner "
+      = paginate @exercises
 
 

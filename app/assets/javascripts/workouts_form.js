@@ -134,9 +134,49 @@ var setTypeChange = function(selector){
 }
 
 
+var dueDateNeeded = function(){
+  $('#workout_user_id').change(function(){
+    if($('#workout_user_id').val() > 0){
+      if($('#due_date').css('display') === 'none'){
+        $('#due_date').animate({
+          height: "toggle",
+          opacity: 1
+        }, 150)
+      }
+    }else{
+      if($('#due_date').css('display') !== 'none'){
+        $('#due_date').animate({
+          height: "toggle",
+          opacity: 1
+        }, 150, function(){
+          $('#workout_due_date').val('')
+        })
+      }
+    }
+  })
+
+}
+
+var dueDateOnPageLoad = function(){
+  if($('#workout_user_id').val() > 0){
+    $('#due_date').css('display', 'block');
+  }
+
+
+}
+
+var dueDateOnEdit = function(){
+  if($('#workout_user_id').length === 0){
+    $('#due_date').css('display', 'block');
+  }
+}
+
+
 
 
 $(function() {
+
+
 
     $( ".datepicker" ).datepicker({
       changeMonth: true,
@@ -163,7 +203,10 @@ $(document).on('nested:fieldAdded', function(event){
 
   weightsNeeded(weightSelector);
   setTypeChange(typeSelector);
+
 })
 
-
+ dueDateNeeded();
+ dueDateOnPageLoad();
+ dueDateOnEdit();
 });

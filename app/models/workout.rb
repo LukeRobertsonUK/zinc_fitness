@@ -8,6 +8,9 @@ class Workout < ActiveRecord::Base
   accepts_nested_attributes_for :exercise_sets, allow_destroy: true
   # default_scope order('created_at DESC' )
 
+  validates :description, presence: true
+  validate :due_date_if_specifying_user
+
   amoeba do
     enable
     clone [:exercise_sets]
@@ -26,6 +29,14 @@ class Workout < ActiveRecord::Base
   def mark_completed
     (self.completion_date ||= Time.now)
 
+  end
+
+  def due_date_if_specifying_user
+    unless user_id.blank?
+      if (user_id > 0 && due_date.blank?)
+        errors.add(:base, "You must select a due-date if creating a workout for a specific client (no due-date is required for templates)")
+      end
+    end
   end
 
 

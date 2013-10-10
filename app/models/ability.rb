@@ -26,6 +26,9 @@ class Ability
 
         can :read, Exercise
 
+        can :show, Workout do |w|
+          w.user_id == user.id
+        end
 
         can :complete, Workout do |w|
             w.user_id == user.id

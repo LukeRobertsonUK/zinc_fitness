@@ -51,15 +51,40 @@
         %br
   .col-md-5.button_center
     - if @workout.user
-      - if @workout.completed
-        = button_to "Review", complete_workout_path(@workout), method: :get, class: "btn btn-success btn-lg full_width"
-      -else
-        = button_to "Smash It!", complete_workout_path(@workout), method: :get, class: "btn btn-success btn-lg full_width"
-    - if @workout.user
-      = button_to 'My Workouts', user_path(current_user), method: :get, class: "btn btn-primary btn-lg full_width"
+      - if @workout.user == current_user
+        - if @workout.completed
+          = button_to "Review", complete_workout_path(@workout), method: :get, class: "btn btn-success btn-lg full_width"
+        -else
+          = button_to "Smash It!", complete_workout_path(@workout), method: :get, class: "btn btn-success btn-lg full_width"
+        = button_to 'My Workouts', user_path(current_user), method: :get, class: "btn btn-primary btn-lg full_width"
+      - else
+        = button_to "#{@workout.user.first_name.possessive} workouts", user_path(@workout.user), method: :get, class: "btn btn-success btn-lg full_width"
+        = button_to 'All Workouts', workouts_path, method: :get, class: "btn btn-primary btn-lg full_width"
     -else
       = button_to 'All Workouts', workouts_path, method: :get, class: "btn btn-primary btn-lg full_width"
-    .edit_copy
-      = link_to 'Edit', edit_workout_path(@workout), class: "btn btn-default btn-lg half_width"
-      = link_to "Copy", duplicate_workout_path(@workout), method: :post, class: "btn btn-warning btn-lg half_width"
+    -if can? :manage, :all
+      .edit_copy
+        -if @workout.completed
+          = link_to "Copy", duplicate_workout_path(@workout), method: :post, class: "btn btn-warning btn-lg full_width"
+        -else
+          = link_to 'Edit', edit_workout_path(@workout), class: "btn btn-default btn-lg half_width"
+          = link_to "Copy", duplicate_workout_path(@workout), method: :post, class: "btn btn-warning btn-lg half_width"
     %br
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

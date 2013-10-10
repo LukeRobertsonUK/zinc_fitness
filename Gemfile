@@ -15,7 +15,7 @@ gem 'haml'
 gem 'aasm'
 gem "amoeba"
 gem 'bootstrap-kaminari-views'
-
+gem 'possessive'
 
 
 

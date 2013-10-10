@@ -425,3 +425,39 @@ ul.exercise_set li.notes {
   font-weight: normal;
   font-style: italic;
 }
+
+.no_records {
+  margin-bottom: 0;
+  font-style: italic;
+  color: $primary;
+}
+
+
+#due_date {
+  display: none;
+}
+
+
+#error_explanation {
+
+  color: $danger;
+  text-align: center;
+  font-size: 0.8em;
+
+}
+
+#error_explanation h2 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+#error_explanation ul {
+  list-style: none;
+  padding: 0;
+}
+
+.client_name {
+  font-weight: bold;
+}

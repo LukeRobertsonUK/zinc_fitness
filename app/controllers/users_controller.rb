@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @grouped_exercises.each do |key, value|
       @grouped_exercises[key] = value.map{|set| set.achieved_weight}.compact.max
     end
-
+    @grouped_exercises.reject! {|key, value| value == nil}
     respond_to do |format|
       format.html # show.html.haml
 

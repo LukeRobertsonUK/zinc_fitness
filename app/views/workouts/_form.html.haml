@@ -9,7 +9,10 @@
           %li= msg
   .row
     .col-md-5
-      - unless (@editing && @workout.user)
+      - if (@editing && @workout.user)
+        %h4.client_name
+          = @workout.user.full_name
+      - else
         .field.force_block
           = f.label :user_id, "Client:"
           = f.select(:user_id, User.all.map {|u| [u.full_name, u.id]},  {include_blank: "Template"})
@@ -17,7 +20,7 @@
         = f.label :description
         %br/
         = f.text_field :description
-      %div{ id: "due date", class: "field force_block"}
+      %div{ id: "due_date", class: "field force_block"}
         = f.label :due_date
         %br/
         = f.text_field :due_date, class: "datepicker"

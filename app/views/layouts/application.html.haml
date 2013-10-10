@@ -23,17 +23,17 @@
               = link_to "My Workouts", user_path(current_user)
             %li
               = link_to 'Exercises', exercises_path
-            %li
-              = link_to 'Workouts', workouts_path
+            - if can? :manage, :all
+              %li
+                = link_to 'Workouts', workouts_path
             %li
               =link_to "Edit Profile", edit_user_registration_path
-            %li
-              = link_to "Users", users_path
+            - if can? :manage, :all
+              %li
+                = link_to "Users", users_path
           %ul.nav.navbar-nav.navbar-right
             %li
-              = mail_to current_user.email
-            %li
-              = link_to('Logout', destroy_user_session_path, :method => :delete)
+              = link_to("Logout (#{current_user.email})", destroy_user_session_path, :method => :delete)
       - else
         .collapse.navbar-collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav.navbar-right

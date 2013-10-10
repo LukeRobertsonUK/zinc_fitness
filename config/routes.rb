@@ -25,7 +25,6 @@ ZincFitnessApp::Application.routes.draw do
     end
   end
 
-
-  root to: "workouts#index"
+  root to: "passthrough#index"
 
 end
