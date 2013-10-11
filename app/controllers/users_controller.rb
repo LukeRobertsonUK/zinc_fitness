@@ -14,7 +14,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @completed_workouts = @user.workouts.where(completed: true).order('completion_date DESC').page(params[:page])
     @outstanding_workouts = @user.workouts.where(completion_date: nil).order('due_date').page params[:page_2]
-    @grouped_exercises = @user.exercise_sets.where({weight_required: true, set_type: "Resistance"}).group_by{|set| set.exercise.name}
+    @grouped_exercises = @user.exercise_sets.where('achieved_weight > 0').group_by{|set| set.exercise.name}
+
     @grouped_exercises.each do |key, value|
       @grouped_exercises[key] = value.map{|set| set.achieved_weight}.compact.max
     end

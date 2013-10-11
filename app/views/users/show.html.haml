@@ -1,19 +1,14 @@
 %h2
-  = @user.full_name
+  -if @user == current_user
+    My Workouts:
+  -else
+    = "#{@user.full_name.possessive} Workouts:"
 
-- if @grouped_exercises.count > 0
-  .row
-    .col-md-12
-      %h3 Maximums
-      %ul.maximums
-        - @grouped_exercises.each do |key, value|
-          %li.maximum
-            ="#{key}: #{value}kg"
 
 .row
-  .col-md-6
+  .col-md-5
     %h3
-      Outstanding Workouts
+      Outstanding
     -if @outstanding_workouts.blank?
       %p.no_records No Records
     -else
@@ -32,9 +27,9 @@
             = link_to "View", workout_path(workout), class: "btn btn-primary btn-xs "
       = paginate @outstanding_workouts, param_name: 'page_2'
 
-  .col-md-6
+  .col-md-5
     %h3
-      Completed Workouts
+      Completed
     -if @completed_workouts.blank?
       %p.no_records No Records
     -else
@@ -49,3 +44,11 @@
               = "Completed: #{workout.completion_date.to_formatted_s(:long_ordinal)}"
             = link_to "View", workout_path(workout),  class: "btn btn-primary btn-xs "
       = paginate @completed_workouts
+  .col-md-2.maximums_column
+
+    %h3
+      Maximums
+    %ul.maximums
+      - @grouped_exercises.each do |key, value|
+        %li.maximum
+          ="#{key}: #{value}kg"

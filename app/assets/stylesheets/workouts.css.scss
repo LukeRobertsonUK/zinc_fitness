@@ -118,7 +118,7 @@ ul.workout_list li {
   list-style: none;
   padding: 0.25em;
   position: relative;
-  border: 1px solid $default_light;
+  border: 1px solid #dddddd;
   border-radius: 4px;
   margin-bottom: 0.5em;
   background-color: white;
@@ -181,12 +181,12 @@ ul.workout_list li .btn {
 }
 
 li.overdue {
-  border: 1px solid black !important;
+  border: 1px solid #dddddd !important;
 
 }
 
 li.due {
-  border: 1px solid black !important;
+  border: 1px solid #dddddd !important;
 }
 
 li.overdue p.completion {
@@ -204,7 +204,7 @@ li.due p.completion {
 
 
 li.completed {
-  border: 1px solid black !important;
+  border: 1px solid #dddddd !important;
  }
 
 li.completed p.completion {
@@ -217,16 +217,12 @@ li.completed p.completion {
 ul.maximums {
   padding-left: 0px;
 
-  display: inline-block;
-
-   // min-height: 22em;
-
 }
 
 ul.maximums li {
   list-style: none;
-
-
+  display: block;
+  color: $primary;
   font-size: 0.8em;
   font-weight: bold;
 }
@@ -250,7 +246,7 @@ ul.maximums li {
 }
 
 p.admin_workout_description {
-  font-size: 0.8em;
+  font-size: 1em !important;
   font-weight: bold;
 }
 
@@ -332,12 +328,10 @@ p.admin_workout_description {
 
 .maximum {
   display: inline-block;
-  padding: 0.3em;
-  border: 1px solid black;
-  border-radius: 4px;
 
-  margin-right: 0.5em;
-  margin-bottom: 0.5em;
+
+
+
 }
 
 .exercise_list {
@@ -509,4 +503,19 @@ p.suggested_weight_text {
 #workout_instructions {
   width: 100%;
   max-width: 100%;
+}
+
+.maximums_column {
+  height: 30em;
+  border-left: 2px solid #dddddd;
+  position: relative;
+  left: -2px;
+}
+
+.set_box {
+  border: 1px solid #dddddd;
+}
+
+#exercise_name {
+  width: 100%;
 }

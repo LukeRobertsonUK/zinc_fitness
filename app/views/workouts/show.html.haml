@@ -2,7 +2,10 @@
   .col-md-7
     %h2
       - if @workout.user
-        = "#{@workout.description}: #{@workout.user.full_name}"
+        - if @workout.user == current_user
+          = @workout.description
+        -else
+          = "#{@workout.description}: #{@workout.user.full_name}"
       - else
         = "#{@workout.description}: TEMPLATE"
 
