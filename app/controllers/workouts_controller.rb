@@ -66,7 +66,7 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:id])
 
     @workout.mark_completed if (params[:workout][:completed].to_i == 1)
-
+    @workout.mark_uncompleted if (params[:workout][:completed].to_i == 0)
     respond_to do |format|
       if @workout.update_attributes(params[:workout])
         format.html { redirect_to @workout, notice: 'Workout was successfully updated.' }

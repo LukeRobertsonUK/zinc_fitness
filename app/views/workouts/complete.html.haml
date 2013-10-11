@@ -36,10 +36,10 @@
       = render 'complete_fields', f: f
 
     .col-md-5.button_center
-      -unless @workout.completed
-        .field.mark_workout_completed
-          =f.label :completed, 'Workout Complete?'
-          =f.check_box :completed
+
+      .field.mark_workout_completed
+        =f.label :completed, 'Workout Complete?'
+        =f.check_box :completed
       .actions
         = f.submit "Save", class: "btn btn-danger btn-lg full_width"
         =link_to "Back", workout_path(@workout), method: :get, class: "btn btn-primary btn-lg full_width"

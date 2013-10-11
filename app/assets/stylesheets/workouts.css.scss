@@ -352,7 +352,12 @@ p.admin_workout_description {
 .workout_instructions {
   height: 10em;
   font-size: 0.8em;
-  max-width: 30em;
+  width: 100%;
+
+}
+
+.workout_instructions_container {
+  width: 100%;
 }
 
 .completed_workout_date {
@@ -491,4 +496,17 @@ p.suggested_weight_text {
 
 .spacer {
   display: block;
+}
+
+#workout_description {
+  width: 100%;
+}
+
+#workout_due_date {
+  width: 100%;
+}
+
+#workout_instructions {
+  width: 100%;
+  max-width: 100%;
 }
