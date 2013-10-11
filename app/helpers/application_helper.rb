@@ -12,6 +12,14 @@ module ApplicationHelper
 
   end
 
+  def exercise_set_heading(set)
+      if set.rest_period.blank?
+        "#{set.exercise.name}: #{pluralize(set.reps, 'rep')}"
+      else
+        "#{set.exercise.name}: #{pluralize(set.reps, 'rep')} / #{pluralize(set.rest_period, 'sec')} rest"
+      end
+  end
+
 
 end
 

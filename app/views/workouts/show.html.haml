@@ -1,13 +1,10 @@
 .row
   .col-md-7
     %h2
-      = @workout.description
-
-    %h3
       - if @workout.user
-        = @workout.user.full_name
+        = "#{@workout.description}: #{@workout.user.full_name}"
       - else
-        Template
+        = "#{@workout.description}: TEMPLATE"
 
     - if @workout.due_date
       - if @workout.completed
@@ -25,30 +22,27 @@
       = @workout.instructions
 
     - @workout.exercise_sets.each do |set|
-      -if set.exercise
-        %h4.exercise_set_header
-          = set.to_string
-        %ul.exercise_set
-          -unless (set.distance.blank? || set.set_type == "Distance")
-            %li
-              = "Distance: #{set.distance}m"
-          -unless (set.time.blank? || set.set_type == "Time Interval")
-            %li
-              = "Interval: #{set.time}s"
-          -unless set.achieved_weight.blank?
-            %li.achieved_weight
-              = "Achieved Weight: #{set.achieved_weight}kg"
-          -unless (set.suggested_weight.blank? || set.achieved_weight)
+      %h3.exercise_set_header
+        = exercise_set_heading(set)
+      %ul.exercise_set
+        -unless set.suggested_weight.blank?
+          -if set.achieved_weight.blank?
             %li.target_weight
-              = "Target Weight: #{set.suggested_weight}kg"
+              ="Target Weight: #{pluralize(set.suggested_weight, 'kg')}"
+          -else
+            %li.achieved_weight
+              ="Achieved Weight: #{pluralize(set.achieved_weight, 'kg')}"
+        -unless set.time.blank?
+          %li.interval_display
+            = "Interval: #{pluralize(set.time, 'sec')}"
+        - unless set.distance.blank?
+          %li.distance_display
+            = "Distance: #{pluralize(set.distance, 'metre')}"
+        -unless set.notes.blank?
+          %li.notes
+            Notes:
+            ="#{set.notes}"
 
-
-          -unless set.notes.blank?
-            %li.notes
-              Notes:
-              ="#{set.notes}"
-      -else
-        %br
   .col-md-5.button_center
     - if @workout.user
       - if @workout.user == current_user

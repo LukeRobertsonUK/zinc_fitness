@@ -57,18 +57,18 @@ ul.exercise_set li {
   list-style: none;
   display: inline-block;
   margin-right: 0.3em;
-  border-radius: 3px;
+
   background: #eeeeee;
-  padding: 0.1em;
+
   padding-right: 0.2em;
-  padding-left: 0.2em;
-  margin-top: 0.3em;
+
+
   font-weight: bold;
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 .exercise_set_header {
-  font-weight: bold;
+  font-size: 1.25em;
   margin: 0px;
   margin-top: 1em;
 
@@ -87,14 +87,16 @@ ul.exercise_set li {
 }
 
 .form_label {
-  // font-weight: normal;
-  background: #eeeeee;
+
+
   border-radius: 3px;
   padding: 0.1em;
   padding-left: 0.2em;
   padding-right: 0.2em;
   width: 25%;
   text-align: right;
+  font-weight: normal;
+
 }
 
 .complete_form {
@@ -254,25 +256,11 @@ p.admin_workout_description {
 
 
 
-.distance {
-  display: none;
-}
-
-.interval {
-  display: none;
-
-}
-
-
 .visible {
   display: block;
 }
 
-.three_digit_entry {
-  width: 3.5em;
 
-  font-size: 0.8em;
-}
 
 .four_digit_entry {
   width: 4.5em;
@@ -402,23 +390,39 @@ ul.exercise_set li.target_weight {
   color: $danger;
   background: none;
   font-weight: normal;
-  font-style: italic;
+
 }
 
 ul.exercise_set li.achieved_weight {
   color: $success;
   background: none;
   font-weight: normal;
-  font-style: italic;
+
 }
 
 
 ul.exercise_set li.notes {
+  color: $info;
+  background: none;
+  font-weight: normal;
+
+}
+
+ul.exercise_set li.distance_display {
+  color: $warning;
+  background: none;
+  font-weight: normal;
+
+}
+
+ul.exercise_set li.interval_display {
   color: $primary;
   background: none;
   font-weight: normal;
-  font-style: italic;
+
+
 }
+
 
 .no_records {
   margin-bottom: 0;
@@ -454,4 +458,37 @@ ul.exercise_set li.notes {
 
 .client_name {
   font-weight: bold;
+}
+
+p.suggested_weight_text {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+.weight_label {
+  color: $success;
+
+}
+
+
+.notes_label {
+  color: $info;
+}
+
+.distance_info {
+  color: $warning;
+}
+
+.interval_info {
+  color: $primary;
+}
+
+.weight_info {
+  color: $danger;
+
+}
+
+.spacer {
+  display: block;
 }
