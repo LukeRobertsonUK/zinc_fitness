@@ -7,7 +7,7 @@ class ExerciseSet < ActiveRecord::Base
 
   default_scope order('created_at' )
 
-
-
+  validates :exercise_id, presence: true
+  validates :reps, presence: true
 
 end

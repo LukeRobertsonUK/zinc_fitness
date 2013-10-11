@@ -27,6 +27,7 @@ class ExerciseSetsController < ApplicationController
   def new
     @exercise_set = ExerciseSet.new
 
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @exercise_set }
