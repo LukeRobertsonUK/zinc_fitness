@@ -1,138 +1,3 @@
-var weightsNeeded = function(selector){
-  selector.change(function(){
-    if(selector.val() === "false"){
-      selector.parent().parent().children('.weight_input_box').fadeOut(150, function(){
-        selector.parent().parent().children().find('.four_digit_entry').val('');
-      })
-    }else{
-      selector.parent().parent().children('.weight_input_box').fadeIn(150);
-    }
-  })
-}
-
-var setTypeChange = function(selector){
-  selector.change(function() {
-
-
-  if(selector.val() === "Distance"){
-
-
-    if(selector.parent().parent().children('.resistance_fields').css('display') !== 'none'){
-      selector.parent().parent().children('.resistance_fields').animate({
-         height: "toggle",
-          opacity: 1
-      }, 150, function(){
-        selector.parent().parent().children('.resistance_fields').find('.exercise_selector').val('false');
-        selector.parent().parent().children('.resistance_fields').find('.four_digit_entry').val('');
-
-      })
-    }
-
-    if(selector.parent().parent().children('.cardio_fields').css('display') === 'none'){
-      selector.parent().parent().children('.cardio_fields').animate({
-        height: "toggle",
-        opacity: 1
-      }, 150, function(){
-        selector.parent().parent().children('.cardio_fields').children('.distance').fadeIn(150)
-      })
-    }else{
-
-        selector.parent().parent().children('.cardio_fields').children('.interval').fadeOut(150, function(){
-              selector.parent().parent().children('.cardio_fields').children('.interval').find('.four_digit_entry').val('');
-              selector.parent().parent().children('.cardio_fields').children('.distance').fadeIn(150);
-            }
-          );
-    }
-   }
-
-
-   if(selector.val() === "Time Interval"){
-
-
-    if(selector.parent().parent().children('.resistance_fields').css('display') !== 'none'){
-      selector.parent().parent().children('.resistance_fields').animate({
-         height: "toggle",
-          opacity: 1
-      }, 150, function(){
-        selector.parent().parent().children('.resistance_fields').find('.exercise_selector').val('false');
-        selector.parent().parent().children('.resistance_fields').find('.four_digit_entry').val('');
-      })
-    }
-
-    if(selector.parent().parent().children('.cardio_fields').css('display') === 'none'){
-      selector.parent().parent().children('.cardio_fields').animate({
-        height: "toggle",
-        opacity: 1
-      }, 150, function(){
-        selector.parent().parent().children('.cardio_fields').children('.interval').fadeIn(150)
-      })
-    }else{
-
-        selector.parent().parent().children('.cardio_fields').children('.distance').fadeOut(150, function(){
-          selector.parent().parent().children('.cardio_fields').children('.distance').find('.four_digit_entry').val('');
-          selector.parent().parent().children('.cardio_fields').children('.interval').fadeIn(150);
-        });
-
-    }
-   }
-
-  if(selector.val() === "Resistance"){
-
-
-    if(selector.parent().parent().children('.cardio_fields').css('display') !== 'none'){
-      selector.parent().parent().children('.cardio_fields').animate({
-        height: "toggle",
-        opacity: 1
-      }, 150, function(){
-        selector.parent().parent().children('.cardio_fields').children('.distance').css({display: 'none'});
-        selector.parent().parent().children('.cardio_fields').children('.distance').find('.four_digit_entry').val('');
-        selector.parent().parent().children('.cardio_fields').children('.interval').css({display: 'none'});
-        selector.parent().parent().children('.cardio_fields').children('.interval').find('.four_digit_entry').val('');
-      })
-    }
-
-    if(selector.parent().parent().children('.resistance_fields').css('display') === 'none'){
-      selector.parent().parent().children('.resistance_fields').animate({
-        height: "toggle",
-        opacity: 1
-      }, 150)
-    }
-
-   }
-
-  if(selector.val() === ""){
-
-
-    if(selector.parent().parent().children('.resistance_fields').css('display') !== 'none'){
-      selector.parent().parent().children('.resistance_fields').animate({
-        height: "toggle",
-        opacity: 1
-      }, 150, function(){
-        selector.parent().parent().children('.resistance_fields').find('.exercise_selector').val('false');
-        selector.parent().parent().children('.resistance_fields').find('.four_digit_entry').val('');
-
-      })
-    };
-
-     if(selector.parent().parent().children('.cardio_fields').css('display') !== 'none'){
-      selector.parent().parent().children('.cardio_fields').animate({
-        height: "toggle",
-        opacity: 1
-      }, 150, function(){
-        selector.parent().parent().children('.cardio_fields').children('.distance').css({display: 'none'});
-        selector.parent().parent().children('.cardio_fields').children('.distance').find('.four_digit_entry').val('');
-        selector.parent().parent().children('.cardio_fields').children('.interval').css({display: 'none'});
-        selector.parent().parent().children('.cardio_fields').children('.interval').find('.four_digit_entry').val('');
-      })
-    }
-
-
-   };
-
-
-  })
-}
-
 
 var dueDateNeeded = function(){
   $('#workout_user_id').change(function(){
@@ -172,41 +37,66 @@ var dueDateOnEdit = function(){
 }
 
 
+var changeWeightField = function(selector){
+  selector.change(function(){
+    selector.parent().parent().children().find('.distance_entry').val('');
+    selector.parent().parent().children().find('.interval_entry').val('');
+  })
+}
+
+var changeDistanceField = function(selector){
+  selector.change(function(){
+    selector.parent().parent().children().find('.weight_entry').val('');
+    selector.parent().parent().children().find('.interval_entry').val('');
+  })
+}
+
+var changeIntervalField = function(selector){
+  selector.change(function(){
+    selector.parent().parent().children().find('.distance_entry').val('');
+    selector.parent().parent().children().find('.weight_entry').val('');
+  })
+}
+
+
+
+
 
 
 $(function() {
-
-
 
     $( ".datepicker" ).datepicker({
       changeMonth: true,
       changeYear: true,
       dateFormat: "yy-mm-dd",
-
     });
 
+  var initialWeightFields = $('.weight_entry');
+  for(var i =0; i < initialWeightFields.length; i++){
+    changeWeightField(initialWeightFields.eq(i))
+  }
 
-var initialFields = $('.set_type_select');
+  var initialDistanceFields = $('.distance_entry');
+  for(var i =0; i < initialDistanceFields.length; i++){
+    changeDistanceField(initialDistanceFields.eq(i))
+  }
 
-for(var i =0; i < initialFields.length; i++){
-  setTypeChange(initialFields.eq(i))
-}
-
-for(var i = 0; i < $('.weight_selector').length; i++){
-  weightsNeeded($('.weight_selector').eq(i));
-}
+  var initialIntervalFields = $('.interval_entry');
+  for(var i =0; i < initialIntervalFields.length; i++){
+    changeIntervalField(initialIntervalFields.eq(i))
+  }
 
 
-$(document).on('nested:fieldAdded', function(event){
-  var typeSelector = event.field.find('.set_type_select');
-  var weightSelector = event.field.find('.weight_selector');
+  $(document).on('nested:fieldAdded', function(event){
+    var weightSelector = event.field.find('.weight_entry');
+    var distanceSelector = event.field.find('.distance_entry');
+    var intervalSelector = event.field.find('.interval_entry');
+    changeWeightField(weightSelector);
+    changeIntervalField(intervalSelector);
+    changeDistanceField(distanceSelector);
+  })
 
-  weightsNeeded(weightSelector);
-  setTypeChange(typeSelector);
-
-})
-
- dueDateNeeded();
- dueDateOnPageLoad();
- dueDateOnEdit();
+   dueDateNeeded();
+   dueDateOnPageLoad();
+   dueDateOnEdit();
 });

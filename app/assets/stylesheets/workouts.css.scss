@@ -252,11 +252,7 @@ p.admin_workout_description {
   font-weight: bold;
 }
 
-.cardio_fields {
-  display: none;
-  height: 2em;
-  margin-top: 0.25em;
-}
+
 
 .distance {
   display: none;
@@ -267,11 +263,6 @@ p.admin_workout_description {
 
 }
 
-.resistance_fields {
-  display: none;
-  height: 2em;
-  margin-top: 0.25em;
-}
 
 .visible {
   display: block;
@@ -297,7 +288,6 @@ p.admin_workout_description {
 .set_box {
   border: 1px solid black;
   padding: 0.25em;
-  padding-right: 4em;
   border-radius: 4px;
   position: relative;
   margin-bottom: 0.5em;
@@ -314,10 +304,14 @@ p.admin_workout_description {
 
 .workout_creation_label {
   font-size: 0.8em;
+  width: 8em;
+  padding-left: 0.5em;
 }
 
 .exercise_adder {
-  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  display: block;
+
 }
 
 .set_type_select {
