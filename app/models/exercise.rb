@@ -4,6 +4,7 @@ class Exercise < ActiveRecord::Base
   has_many :workouts, through: :exercise_sets
 
   validates :name, presence: true
+  validates :name, uniqueness: true
 
 
 end
