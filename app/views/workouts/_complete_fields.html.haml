@@ -7,7 +7,7 @@
   -unless exercise_set_form.object.distance.blank?
     .distance_info
       = "Distance: #{pluralize(exercise_set_form.object.distance, 'metre')}"
-  -unless exercise_set_form.object.suggested_weight.blank?
+  -if (exercise_set_form.object.distance.blank? && exercise_set_form.object.time.blank?)
     .weight_info
       ="Target Weight: #{pluralize(exercise_set_form.object.suggested_weight, 'kg')}"
     .field.spacer
