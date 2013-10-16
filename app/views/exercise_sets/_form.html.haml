@@ -7,10 +7,15 @@
       %ul
         - @exercise_set.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    = f.label :notes
-    %br/
-    = f.text_field :notes
-  =render 'fields', f: f
-  .actions
-    = f.submit
+  .row
+    .col-md-5
+      .field.force_block
+        = f.label :notes
+        %br/
+        = f.text_field :notes
+      -unless @exercise_set.reps.blank?
+        =render 'fields', f: f
+    .col-md-7.button_center
+      .actions
+        = f.submit "Save", class: "btn btn-danger btn-lg full_width"
+      = link_to "Back", @exercise_set.workout, class: "btn btn-primary btn-lg full_width"

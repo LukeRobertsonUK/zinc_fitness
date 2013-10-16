@@ -65,8 +65,7 @@ class WorkoutsController < ApplicationController
   def update
     @workout = Workout.find(params[:id])
 
-    @workout.mark_completed if (params[:workout][:completed].to_i == 1)
-    @workout.mark_uncompleted if (params[:workout][:completed].to_i == 0)
+
     respond_to do |format|
       if @workout.update_attributes(params[:workout])
         format.html { redirect_to @workout, notice: 'Workout was successfully updated.' }
@@ -92,6 +91,13 @@ class WorkoutsController < ApplicationController
 
   def complete
     @workout = Workout.find(params[:id])
+    if @workout.completed == true
+      @workout.mark_uncompleted
+    else
+      @workout.mark_completed
+    end
+    @workout.save!
+    redirect_to @workout, notice: "Workout completion status updated"
   end
 
 
@@ -100,9 +106,8 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:id])
     @duplicate = @workout.amoeba_dup
     @duplicate.exercise_sets.each do |set|
-      set.suggested_weight = nil
-      set.achieved_weight = nil
       set.notes = nil
+
 
     end
     @duplicate.save!

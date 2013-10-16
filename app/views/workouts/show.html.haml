@@ -27,16 +27,26 @@
     - @workout.exercise_sets.each do |set|
       %h3.exercise_set_header
         = exercise_set_heading(set)
-      = link_to "Show", set
-      = link_to "Add Record", edit_exercise_set_path(set)
+      %ul.exercise_set
+        - if set.set_records.any?
+          %li.achieved_weight
+            Weight:
+            =weights_list(set)
+        -unless set.notes.blank?
+          %li.notes
+            Notes:
+            = set.notes
+      -unless @workout.completed
+        - if (@workout.user && @workout.user == current_user)
+          = link_to "Annontate", edit_exercise_set_path(set), class: "btn btn-primary btn-xs"
 
   .col-md-5.button_center
     - if @workout.user
       - if @workout.user == current_user
         - if @workout.completed
-          = button_to "Review", complete_workout_path(@workout), method: :get, class: "btn btn-success btn-lg full_width"
+          = button_to "Mark Incomplete", complete_workout_path(@workout), method: :post, class: "btn btn-success btn-lg full_width"
         -else
-          = button_to "Smash It!", complete_workout_path(@workout), method: :get, class: "btn btn-success btn-lg full_width"
+          = button_to "Mark Complete", complete_workout_path(@workout), method: :post, class: "btn btn-success btn-lg full_width"
         = button_to 'My Workouts', user_path(current_user), method: :get, class: "btn btn-primary btn-lg full_width"
       - else
         = button_to "#{@workout.user.first_name.possessive} workouts", user_path(@workout.user), method: :get, class: "btn btn-success btn-lg full_width"

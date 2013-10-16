@@ -27,10 +27,12 @@ class Workout < ActiveRecord::Base
   end
 
   def mark_completed
+    self.completed = true
     (self.completion_date ||= Time.now)
   end
 
   def mark_uncompleted
+    self.completed = nil
     self.completion_date = nil
   end
 

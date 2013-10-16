@@ -25,6 +25,12 @@ module ApplicationHelper
     heading
   end
 
+def weights_list(set)
+  array = []
+  set.set_records.each {|record| array << record.weight }
+  array.map {|item| "#{item}kg"}.join(', ')
+end
+
 
 end
 

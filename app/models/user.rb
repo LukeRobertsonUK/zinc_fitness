@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :workouts
   has_many :exercise_sets, through: :workouts
+  has_many :set_records, through: :exercise_sets
 
   def role?(role)
     self.role == role

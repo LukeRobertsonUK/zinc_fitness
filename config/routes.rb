@@ -21,7 +21,7 @@ ZincFitnessApp::Application.routes.draw do
   resources :workouts do
     member do
       post 'duplicate', to: "workouts#duplicate"
-      get 'complete', to: "workouts#complete"
+      post 'complete', to: "workouts#complete"
     end
   end
 
