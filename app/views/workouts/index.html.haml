@@ -1,5 +1,5 @@
 %h2.workout_heading
-  Workouts:
+  Dashboard:
   = link_to 'New Workout', new_workout_path, class: "btn btn-info new_workout_button"
 
 =search_form_for @q, :url => url_for(:workouts_controller => "q", :action => "index") do |f|

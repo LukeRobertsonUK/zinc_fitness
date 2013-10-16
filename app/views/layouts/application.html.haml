@@ -25,12 +25,13 @@
               = link_to 'Exercises', exercises_path
             - if can? :manage, :all
               %li
-                = link_to 'Workouts', workouts_path
-            %li
-              =link_to "Edit Profile", edit_user_registration_path
+                = link_to 'Dashboard', workouts_path
+
             - if can? :manage, :all
               %li
-                = link_to "Users", users_path
+                = link_to "Clients", users_path
+            %li
+              =link_to "Edit Profile", edit_user_registration_path
           %ul.nav.navbar-nav.navbar-right
             %li
               = link_to("Logout (#{current_user.email})", destroy_user_session_path, :method => :delete)
@@ -43,6 +44,7 @@
               = link_to "Sign Up", new_user_registration_path
     %p.notice= notice
     %p.alert= alert
+
     .container
 
       = yield
