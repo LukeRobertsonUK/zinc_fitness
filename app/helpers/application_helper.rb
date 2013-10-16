@@ -2,7 +2,7 @@ module ApplicationHelper
    def list_exercises(workout)
 
 
-    array = workout.exercise_sets.map { |set| "#{set.exercise.name} (#{pluralize(set.sets, 'set')}) " }.join(", ")
+    array = workout.exercise_sets.map { |set| "#{set.exercise.name} (#{pluralize(set.sets, 'set')})" }.join(", ")
   end
 
   def maximums(grouped_exercises)
