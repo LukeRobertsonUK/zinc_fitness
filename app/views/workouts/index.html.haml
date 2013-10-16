@@ -37,8 +37,12 @@
           %li
             %p.admin_workout_description
               = "#{workout.description}: #{list_exercises(workout)}"
-            %p
-              = "Created for #{workout.user.full_name}, #{workout.created_at.to_formatted_s(:long_ordinal)}"
+            -if workout.completed
+              %p
+                = "Created for #{workout.user.full_name} on #{workout.created_at.to_formatted_s(:long_ordinal)}. Completed on #{workout.completion_date.to_formatted_s(:long_ordinal)}."
+            -else
+              %p
+                = "Created for #{workout.user.full_name} on #{workout.created_at.to_formatted_s(:long_ordinal)}."
             .links
               = link_to 'View', workout, class: "btn btn-primary btn-xs not_corner"
               -unless workout.completed
