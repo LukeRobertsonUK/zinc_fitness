@@ -10,7 +10,7 @@
     %h3
       = "Outstanding (#{@outstanding_count})"
     -if @outstanding_workouts.blank?
-      %p.no_records No Records
+      %p You have no outstanding workouts. Ask your trainer to create a program of workouts for you!
     -else
       %ul.workout_list
         -@outstanding_workouts.each do |workout|
@@ -32,7 +32,7 @@
     %h3
       ="Completed (#{@completed_count})"
     -if @completed_workouts.blank?
-      %p.no_records No Records
+      %p You have yet to complete a workout. To do so, click "View" next to one of your outstanding workouts and then click ''Mark Complete".
     -else
       %ul.workout_list
         -@completed_workouts.each do |workout|
@@ -49,7 +49,10 @@
 
     %h3
       Maximums
-    %ul.maximums
-      - @grouped_exercises.each do |key, value|
-        %li.maximum
-          ="#{key}: #{value}kg"
+    -if @grouped_exercises.blank?
+      %p You have yet to record a weight for any of your workouts. To do so, click "View" next to one of your outstanding workouts and then "+ Weights" to record weights for each applicable activity.
+    -else
+      %ul.maximums
+        - @grouped_exercises.each do |key, value|
+          %li.maximum
+            ="#{key}: #{value}kg"
