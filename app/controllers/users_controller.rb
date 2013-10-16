@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @completed_workouts = @user.workouts.where(completed: true).order('completion_date DESC').page(params[:page])
-    @outstanding_workouts = @user.workouts.where(completion_date: nil).order('due_date').page params[:page_2]
+    @outstanding_workouts = @user.workouts.where(completed: nil).order('due_date').page params[:page_2]
 
     @grouped_exercises = @user.set_records.where('weight > 0').group_by{|record| record.exercise_set.exercise.name}
 
