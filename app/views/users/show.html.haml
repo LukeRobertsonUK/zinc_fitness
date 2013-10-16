@@ -8,7 +8,7 @@
 .row
   .col-md-5
     %h3
-      Outstanding
+      = "Outstanding (#{@outstanding_count})"
     -if @outstanding_workouts.blank?
       %p.no_records No Records
     -else
@@ -30,7 +30,7 @@
 
   .col-md-5
     %h3
-      Completed
+      ="Completed (#{@completed_count})"
     -if @completed_workouts.blank?
       %p.no_records No Records
     -else

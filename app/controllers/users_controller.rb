@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     @completed_workouts = @user.workouts.where(completed: true).order('completion_date DESC').page(params[:page])
     @outstanding_workouts = @user.workouts.where(completed: nil).order('due_date').page params[:page_2]
 
+    @outstanding_count = @user.workouts.where(completed: nil).count
+    @completed_count = @user.workouts.where(completed: true).count
+
     @grouped_exercises = @user.set_records.where('weight > 0').group_by{|record| record.exercise_set.exercise.name}
 
     @grouped_exercises.each do |key, value|
