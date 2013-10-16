@@ -10,6 +10,9 @@ class WorkoutsController < ApplicationController
     @r = Workout.where(user_id: nil).order('created_at DESC' ).search(params[:q])
     @templates = @r.result(distinct: true).page(params[:page])
 
+    @template_count = Workout.where(user_id: nil).count
+    @client_workout_count =  Workout.where('user_id > 0').count
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @workouts }

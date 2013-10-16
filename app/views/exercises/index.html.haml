@@ -12,7 +12,7 @@
 
   .col-md-12
     - if @exercises.blank?
-      %p.no_records No Records
+      %p No exercises match your search term.
     -else
       %ul.workout_list.exercise_list
         - @exercises.each do |exercise|
