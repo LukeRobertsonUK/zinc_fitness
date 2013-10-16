@@ -10,6 +10,8 @@ class ExerciseSet < ActiveRecord::Base
   default_scope order('created_at' )
 
   validates :exercise_id, presence: true
+  validates :sets, presence: true
+
 
   def destroy_set_records
     SetRecord.where(exercise_set_id: self.id).each {|record| record.destroy}

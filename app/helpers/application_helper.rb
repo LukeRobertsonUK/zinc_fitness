@@ -22,6 +22,9 @@ module ApplicationHelper
     unless set.time.blank?
       heading = "#{set.exercise.name}: #{pluralize(set.sets, 'set')} of #{pluralize(set.time, 'second')} / #{pluralize(set.rest_period, 'second')} rest"
     end
+    if (set.time.blank? && set.reps.blank? && set.distance.blank?)
+      heading = "#{set.exercise.name}: #{pluralize(set.sets, 'set')} / #{pluralize(set.rest_period, 'second')} rest"
+    end
     heading
   end
 
