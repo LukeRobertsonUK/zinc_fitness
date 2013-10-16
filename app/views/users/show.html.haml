@@ -26,6 +26,7 @@
                 = "Due: #{workout.due_date.to_formatted_s(:long_ordinal)}"
             = link_to "View", workout_path(workout), class: "btn btn-primary btn-xs "
       = paginate @outstanding_workouts, param_name: 'page_2'
+      %br
 
   .col-md-5
     %h3
