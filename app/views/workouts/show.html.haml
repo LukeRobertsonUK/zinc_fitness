@@ -27,24 +27,8 @@
     - @workout.exercise_sets.each do |set|
       %h3.exercise_set_header
         = exercise_set_heading(set)
-      %ul.exercise_set
-        -unless set.suggested_weight.blank?
-          -if set.achieved_weight.blank?
-            %li.target_weight
-              ="Target Weight: #{pluralize(set.suggested_weight, 'kg')}"
-          -else
-            %li.achieved_weight
-              ="Achieved Weight: #{pluralize(set.achieved_weight, 'kg')}"
-        -unless set.time.blank?
-          %li.interval_display
-            = "Interval: #{pluralize(set.time, 'sec')}"
-        - unless set.distance.blank?
-          %li.distance_display
-            = "Distance: #{pluralize(set.distance, 'metre')}"
-        -unless set.notes.blank?
-          %li.notes
-            Notes:
-            ="#{set.notes}"
+      = link_to "Show", set
+      = link_to "Add Record", edit_exercise_set_path(set)
 
   .col-md-5.button_center
     - if @workout.user

@@ -62,7 +62,7 @@ class ExerciseSetsController < ApplicationController
 
     respond_to do |format|
       if @exercise_set.update_attributes(params[:exercise_set])
-        format.html { redirect_to @exercise_set, notice: 'Exercise set was successfully updated.' }
+        format.html { redirect_to @exercise_set.workout, notice: 'Exercise set was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

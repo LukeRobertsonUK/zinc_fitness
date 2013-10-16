@@ -5,21 +5,22 @@
       = exercise_set_form.link_to_remove 'Remove', class: "btn btn-danger btn-xs"
     .reps_and_rest
       .field
-        = exercise_set_form.label :reps, "Reps:", class: "workout_creation_label"
-        = exercise_set_form.number_field :reps, min: 1, step: 1, class: "four_digit_entry"
+        = exercise_set_form.label :sets, "Sets:", class: "workout_creation_label"
+        = exercise_set_form.number_field :sets, min: 1, step: 1, class: "four_digit_entry"
       .field
         = exercise_set_form.label :rest_period, "Rest (secs):", class: "workout_creation_label"
         = exercise_set_form.number_field :rest_period, min: 0, step: 5,  class: "four_digit_entry"
     .option_fields
+      .field
+        = exercise_set_form.label :reps, "Reps:", class: "workout_creation_label"
+        =exercise_set_form.number_field :reps, min: 1, step: 1, class: "four_digit_entry weight_entry"
       .field
         = exercise_set_form.label :distance, "Distance (m):", class: "workout_creation_label"
         = exercise_set_form.number_field :distance, min: 0, step: 1, class: "four_digit_entry distance_entry"
       .field
         =exercise_set_form.label :time, "Interval (secs):", class: "workout_creation_label"
         =exercise_set_form.number_field :time, min: 0, step: 1, class: "four_digit_entry interval_entry"
-      .field
-        = exercise_set_form.label :suggested_weight, "Weight (kg):", class: "workout_creation_label"
-        =exercise_set_form.number_field :suggested_weight, min: 0, step: 0.5, class: "four_digit_entry weight_entry"
+
 
 
 

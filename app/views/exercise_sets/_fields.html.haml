@@ -1,0 +1,5 @@
+= f.fields_for :set_records do |set_records_form|
+
+  = set_records_form.label :weight, class: "workout_creation_label"
+  = set_records_form.number_field :weight, min: 0, step: 0.5, class: "four_digit_entry"
+= f.link_to_add "Record Weight", :set_records, class: "btn btn-success btn-lg"

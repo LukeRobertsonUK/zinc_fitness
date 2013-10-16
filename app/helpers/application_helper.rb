@@ -13,11 +13,16 @@ module ApplicationHelper
   end
 
   def exercise_set_heading(set)
-      if set.rest_period.blank?
-        "#{set.exercise.name}: #{pluralize(set.reps, 'rep')}"
-      else
-        "#{set.exercise.name}: #{pluralize(set.reps, 'rep')} / #{pluralize(set.rest_period, 'sec')} rest"
-      end
+    unless set.reps.blank?
+      heading = "#{set.exercise.name}: #{pluralize(set.sets, 'set')} of #{pluralize(set.reps, 'rep')} / #{pluralize(set.rest_period, 'second')} rest"
+    end
+    unless set.distance.blank?
+      heading = "#{set.exercise.name}: #{pluralize(set.sets, 'set')} of #{pluralize(set.distance, 'metre')} / #{pluralize(set.rest_period, 'second')} rest"
+    end
+    unless set.time.blank?
+      heading = "#{set.exercise.name}: #{pluralize(set.sets, 'set')} of #{pluralize(set.time, 'second')} / #{pluralize(set.rest_period, 'second')} rest"
+    end
+    heading
   end
 
 

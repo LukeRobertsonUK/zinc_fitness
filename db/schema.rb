@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131009121230) do
+ActiveRecord::Schema.define(:version => 20131016143208) do
 
   create_table "exercise_sets", :force => true do |t|
     t.integer  "exercise_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20131009121230) do
     t.integer  "distance"
     t.integer  "time"
     t.string   "notes"
+    t.integer  "sets"
   end
 
   add_index "exercise_sets", ["exercise_id"], :name => "index_exercise_sets_on_exercise_id"
@@ -38,6 +39,15 @@ ActiveRecord::Schema.define(:version => 20131009121230) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "set_records", :force => true do |t|
+    t.float    "weight"
+    t.integer  "exercise_set_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "set_records", ["exercise_set_id"], :name => "index_set_records_on_exercise_set_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
