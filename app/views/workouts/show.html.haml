@@ -38,7 +38,7 @@
             = set.notes
       -unless @workout.completed
         - if (@workout.user && @workout.user == current_user)
-          = link_to "Annontate", edit_exercise_set_path(set), class: "btn btn-primary btn-xs"
+          = link_to "+ Notes / Weights", edit_exercise_set_path(set), class: "btn btn-primary btn-xs"
 
   .col-md-5.button_center
     - if @workout.user
