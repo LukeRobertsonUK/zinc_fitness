@@ -10,7 +10,8 @@
 
 .row
   .col-md-6
-    %h3 Templates
+    %h3
+      = "Templates (#{@template_count})"
     - if @templates.blank?
       -if @template_count == 0
         %p You have no templates.
@@ -31,7 +32,8 @@
       %br
 
   .col-md-6
-    %h3 Client Workouts
+    %h3
+      ="Client Workouts (#{@client_workout_count})"
     - if @workouts.blank?
       - if @client_workout_count == 0
         %p You have created no client workouts. Get started with the "New Workout" button above.
