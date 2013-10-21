@@ -512,7 +512,7 @@ p.suggested_weight_text {
 }
 
 .maximums_column {
-  height: 30em;
+  height: 60em;
   border-left: 2px solid #dddddd;
   position: relative;
   left: -2px;
@@ -573,4 +573,19 @@ p.notice {
 .mod_center {
   width: 100%;
   text-align: center;
+}
+
+.footer {
+  display: block;
+  width: 100%;
+  text-align: right;
+  position: fixed;
+  bottom: 0;
+  background: white;
+  padding-right: 0.2em;
+  padding-left: 2em;
+  border-top: 2px solid #dddddd;
+  font-size: 0.8em;
+  color: grey
+
 }

@@ -12,7 +12,7 @@
       .mod_center
         =link_to "Modify Activity", {}, class: 'btn btn-warning btn-xs', id: "show_modify_options"
       #modify_activity
-        %p Only complete this section if you are unable to complete the activity set by your trainer!
+        %p Only modify these fields if you are unable to complete the activity set by your trainer!
         .field.force_block
           =f.label :exercise, "Exercise:"
           = f.collection_select :exercise_id, Exercise.all, :id, :name, {include_blank: "Select Exercise"}
