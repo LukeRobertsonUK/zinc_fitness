@@ -10,3 +10,5 @@
     = link_to 'All Exercises', exercises_path, class: "btn btn-primary btn-lg full_width"
     -if can? :manage, :all
       = button_to 'Edit', edit_exercise_path(@exercise), method: :get, class: "btn btn-default btn-lg full_width"
+.row
+  .spacer
