@@ -38,6 +38,9 @@ class Ability
             w.user_id == user.id
         end
 
+        can :update, ExerciseSet do |s|
+            s.workout.user_id == user.id
+        end
 
     end
   end
