@@ -42,6 +42,8 @@
             = link_to "+ Notes", edit_exercise_set_path(set), class: "btn btn-primary btn-xs"
           -else
             = link_to "+ Weights", edit_exercise_set_path(set), class: "btn btn-primary btn-xs"
+            .pb
+              = "PB: #{@workout.user.personal_bests[set.exercise.name]}kg" if @workout.user.personal_bests[set.exercise.name]
 
   .col-md-5.button_center.workout_show
     - if @workout.user

@@ -22,4 +22,12 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def personal_bests
+    grouped_exercises = self.set_records.where('weight > 0').group_by{|record| record.exercise_set.exercise.name}
+    grouped_exercises.each do |key, value|
+    grouped_exercises[key] = value.map{|record| record.weight}.compact.max
+    end
+    grouped_exercises.reject! {|key, value| value == nil}
+    grouped_exercises#
+  end
 end

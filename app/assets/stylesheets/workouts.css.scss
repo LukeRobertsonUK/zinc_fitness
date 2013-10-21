@@ -604,5 +604,11 @@ p.please_wait {
   margin-bottom: 0;
   padding-left: 0.2em;
   color: $danger
+}
 
+.pb {
+  font-size: 0.8em;
+  font-weight: bold;
+  color: $primary;
+  display: inline-block;
 }
