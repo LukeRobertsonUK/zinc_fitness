@@ -9,6 +9,30 @@
           %li= msg
   .row
     .col-md-5
+      .mod_center
+        =link_to "Modify Activity", {}, class: 'btn btn-warning btn-xs', id: "show_modify_options"
+      #modify_activity
+        %p Only complete this section if you are unable to complete the activity set by your trainer!
+        .field.force_block
+          =f.label :exercise, "Exercise:"
+          = f.collection_select :exercise_id, Exercise.all, :id, :name, {include_blank: "Select Exercise"}
+        .field
+          =f.label :sets, "Sets:"
+          =f.number_field :sets, min: 1, step: 1, class: "four_digit_entry"
+        -unless @exercise_set.reps.blank?
+          .field
+            =f.label :reps, "Reps:"
+            =f.number_field :reps, min: 1, step: 1, class: "four_digit_entry"
+        -unless @exercise_set.distance.blank?
+          .field
+            =f.label :distance, "Distance (m):"
+            =f.number_field :distance, min: 0, step: 1, class: "four_digit_entry"
+        -unless @exercise_set.time.blank?
+          .field
+            =f.label :time, "Interval (secs):"
+            =f.number_field :time, min: 0, step: 1, class: "four_digit_entry"
+
+
       .field.force_block
         = f.label :notes
         %br/

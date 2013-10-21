@@ -59,6 +59,23 @@ var changeIntervalField = function(selector){
 }
 
 
+var activityModify = function(){
+  $('#show_modify_options').on('click', function(e){
+    e.preventDefault();
+    $('#modify_activity').animate({
+      height: "toggle",
+      opacity: 1
+    }, 150, function(){
+      if($('#modify_activity').css('display') === 'none'){
+        $('#show_modify_options').html("Modify Activity");
+      }else{
+        $('#show_modify_options').html("Hide Options");
+      }
+    });
+  })
+}
+
+
 
 
 
@@ -99,4 +116,7 @@ $(function() {
    dueDateNeeded();
    dueDateOnPageLoad();
    dueDateOnEdit();
+   activityModify();
+
+
 });

@@ -24,8 +24,12 @@ $info_light: rgb(189,144,211);
 }
 .button_center {
   text-align: center;
-  padding-top: 1em;
+  padding-top: 0em;
 
+}
+
+.workout_show {
+  padding-top: 0.5em;
 }
 
 .full_width {
@@ -550,4 +554,23 @@ p.notice {
 
 .lift_button {
   margin-bottom: .4em
+}
+
+#modify_activity {
+  border: 1px solid $warning;
+  padding: 0.5em;
+  border-radius: 4px;
+  margin-bottom: 0.5em;
+  color: $warning;
+  text-align: center;
+  display: none;
+}
+
+#show_modify_options {
+  margin-bottom: -0.05em;
+}
+
+.mod_center {
+  width: 100%;
+  text-align: center;
 }

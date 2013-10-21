@@ -43,7 +43,7 @@
           -else
             = link_to "+ Weights", edit_exercise_set_path(set), class: "btn btn-primary btn-xs"
 
-  .col-md-5.button_center
+  .col-md-5.button_center.workout_show
     - if @workout.user
       - if @workout.user == current_user
         - if @workout.completed
