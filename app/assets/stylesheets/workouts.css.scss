@@ -221,16 +221,15 @@ li.completed p.completion {
 
 
 ul.maximums {
-  padding-left: 0px;
+  padding-left: 0em;
 
 }
 
 ul.maximums li {
-  list-style: none;
   display: block;
-  color: $primary;
-  font-size: 0.8em;
-  font-weight: bold;
+  color: $default;
+  font-size: 1em;
+
 }
 
 .workout_heading {
@@ -595,4 +594,15 @@ p.notice {
 
 .image_center {
   text-align: center;
+}
+
+p.please_wait {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 1.5em;
+  margin-bottom: 0;
+  padding-left: 0.2em;
+  color: $danger
+
 }

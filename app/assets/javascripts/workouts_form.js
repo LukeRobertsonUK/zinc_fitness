@@ -117,6 +117,6 @@ $(function() {
    dueDateOnPageLoad();
    dueDateOnEdit();
    activityModify();
-
+   clickLink();
 
 });
