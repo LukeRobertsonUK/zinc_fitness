@@ -1,3 +1,4 @@
+
 %h2
   -if @user == current_user
     My Workouts:
@@ -48,7 +49,7 @@
   .col-md-2.maximums_column
 
     %h3
-      Maximums
+      PBs
     -if @grouped_exercises.blank?
       %p You have yet to record a weight for any of your workouts. To do so, click "View" next to one of your outstanding workouts and then "+ Weights" to record weights for each applicable activity.
     -else

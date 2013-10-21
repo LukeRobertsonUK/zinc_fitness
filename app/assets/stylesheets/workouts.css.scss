@@ -19,7 +19,9 @@ $info_light: rgb(189,144,211);
 
 // }
 
-
+.container {
+  padding-top: 3em;
+}
 .button_center {
   text-align: center;
   padding-top: 1em;
@@ -526,7 +528,7 @@ p.suggested_weight_text {
 
 .weight_record_entry {
   text-align: center;
-  margin-bottom: 0.3em
+  margin-bottom: 0.5em
 }
 
 .weight_entry_add {
@@ -536,4 +538,16 @@ p.suggested_weight_text {
 p.notice {
   display: block !important;
   margin-bottom: 0;
+}
+
+.zinc_logo {
+  height: 4em;
+}
+
+.user_weight_entry {
+ font-size: 1.2em;
+}
+
+.lift_button {
+  margin-bottom: .4em
 }
