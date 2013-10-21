@@ -214,7 +214,7 @@ li.completed {
  }
 
 li.completed p.completion {
-  color: $info;
+  color: $primary;
   font-size: 0.7em;
 }
 
@@ -360,7 +360,7 @@ p.admin_workout_description {
 }
 
 .completed_workout_date {
-  color: $info;
+  color: $primary;
   font-weight: bold;
 }
 
@@ -406,7 +406,7 @@ ul.exercise_set li.achieved_weight {
 
 
 ul.exercise_set li.notes {
-  color: $info;
+  color: $primary;
   background: none;
   font-weight: normal;
 
@@ -608,7 +608,7 @@ p.please_wait {
 
 .pb {
   font-size: 0.8em;
-  font-weight: bold;
+
   color: $primary;
   display: inline-block;
 }
