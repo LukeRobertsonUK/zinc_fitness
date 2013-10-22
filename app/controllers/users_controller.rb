@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     end
     @grouped_exercises.reject!{|key, value| value == nil}
     @pb_array = @grouped_exercises.sort_by{|k,v| k}
-    binding.pry
+
 
     respond_to do |format|
       format.html # show.html.haml
