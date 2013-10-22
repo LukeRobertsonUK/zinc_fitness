@@ -54,8 +54,8 @@
       %p You have yet to record a weight for any of your workouts. To do so, click "View" next to one of your outstanding workouts and then "+ Weights" to record weights for each applicable activity.
     -else
       %ul.maximums
-        - @grouped_exercises.each do |key, value|
+        - @pb_array.each do |pair|
           %li.maximum
-            ="#{key}: #{value}kg"
+            ="#{pair[0]}: #{pair[1]}kg"
 .row
   .spacer
