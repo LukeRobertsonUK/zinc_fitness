@@ -1,7 +1,7 @@
 %h2.workout_heading
   Exercises:
   -if can? :manage, :all
-    = link_to 'New Exercise', new_exercise_path, class: "btn btn-info new_workout_button"
+    = link_to '+ Exercise', new_exercise_path, class: "btn btn-info new_workout_button"
 
 =search_form_for @q, :url => url_for(:exercises_controller => "q", :action => "index") do |f|
   .search_bar
