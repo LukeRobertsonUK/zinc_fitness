@@ -18,12 +18,13 @@ class UsersController < ApplicationController
     @outstanding_count = @user.workouts.where(completed: nil).count
     @completed_count = @user.workouts.where(completed: true).count
 
-    @grouped_exercises = @user.set_records.where('weight > 0').group_by{|record| record.exercise_set.exercise.name}
+    @grouped_exercises = @user.set_records.includes(:exercise_set).where('weight > 0').group_by{|record| record.exercise_set.exercise.name}
     @grouped_exercises.each do |key, value|
       @grouped_exercises[key] = value.map{|record| record.weight}.compact.max
     end
     @grouped_exercises.reject!{|key, value| value == nil}
     @pb_array = @grouped_exercises.sort_by{|k,v| k}
+
 
 
     respond_to do |format|
