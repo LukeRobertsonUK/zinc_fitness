@@ -36,6 +36,17 @@ def weights_list(set)
   array.compact.map {|item| "#{item}kg"}.join(', ')
 end
 
+def last_time_list(set)
+  array = []
+  set.set_records.each {|record| array << record.weight }
+  string = array.compact.map {|item| "#{item}kg"}.join(', ')
+  unless set.notes.blank?
+    string = "#{string} (#{set.notes})"
+  end
+
+  string
+
+end
 
 end
 

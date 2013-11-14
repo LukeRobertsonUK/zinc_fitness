@@ -28,10 +28,22 @@
       %h3.exercise_set_header
         = exercise_set_heading(set)
       %ul.exercise_set
+        -unless @workout.completed
+          -if @workout.user.personal_bests[set.exercise.name]
+            %li.last_time
+              = "Personal Best: #{@workout.user.personal_bests[set.exercise.name]}kg"
+          -if set.most_recent_similar_activity
+            %li.last_time
+              Last Time:
+              =last_time_list(set.most_recent_similar_activity)
+
+
         - if set.set_records.any?
+
           %li.achieved_weight
             Weight:
             =weights_list(set)
+
         -unless set.notes.blank?
           %li.notes
             Notes:
@@ -42,8 +54,7 @@
             = link_to "+ Notes", edit_exercise_set_path(set), class: "btn btn-primary btn-xs"
           -else
             = link_to "+ Weights", edit_exercise_set_path(set), class: "btn btn-primary btn-xs"
-            .pb
-              = "PB: #{@workout.user.personal_bests[set.exercise.name]}kg" if @workout.user.personal_bests[set.exercise.name]
+
 
   .col-md-5.button_center.workout_show
     - if @workout.user

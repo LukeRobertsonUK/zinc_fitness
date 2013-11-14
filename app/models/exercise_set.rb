@@ -17,4 +17,10 @@ class ExerciseSet < ActiveRecord::Base
     SetRecord.where(exercise_set_id: self.id).each {|record| record.destroy}
   end
 
+  def most_recent_similar_activity
+    ExerciseSet.unscoped.where({exercise_id: self.exercise_id, sets: self.sets, reps: self.reps}).order('updated_at DESC').reject{|set| set.id == self.id}.reject{|set| set.set_records.blank?}.first
+  end
+
+
+
 end
