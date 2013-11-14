@@ -37,6 +37,7 @@ class ExerciseSetsController < ApplicationController
   # GET /exercise_sets/1/edit
   def edit
     @exercise_set = ExerciseSet.find(params[:id])
+    @no_border = true
   end
 
   # POST /exercise_sets

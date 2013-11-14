@@ -50,8 +50,9 @@
     .container
 
       = yield
-    .footer
-      Site developed by Luke Robertson
+    -unless @no_border
+      .footer
+        Site developed by Luke Robertson
 
 
 
