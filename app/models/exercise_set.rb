@@ -20,7 +20,7 @@ class ExerciseSet < ActiveRecord::Base
 
 
   def most_recent_similar_activity
-    self.user.exercise_sets.where({exercise_id: self.exercise_id, sets: self.sets, reps: self.reps}).order('updated_at DESC').reject{|set| set.id == self.id}.reject{|set| set.set_records.blank?}.first
+    self.user.exercise_sets.where({exercise_id: self.exercise_id, sets: self.sets, reps: self.reps}).order('updated_at DESC').reject{|set| set.id == self.id}.reject{|set| set.workout.completed != true}.reject{|set| (set.set_records.blank? && set.notes.blank?)}.first
   end
 
 

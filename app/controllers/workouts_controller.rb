@@ -100,7 +100,7 @@ class WorkoutsController < ApplicationController
       @workout.mark_completed
     end
     @workout.save!
-    redirect_to @workout.user, notice: "Workout completion status updated"
+    redirect_to @workout, notice: "Workout completion status updated"
   end
 
 
