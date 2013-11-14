@@ -32,10 +32,10 @@
           -if @workout.user.personal_bests[set.exercise.name]
             %li.last_time
               = "Personal Best: #{@workout.user.personal_bests[set.exercise.name]}kg"
-          -if set.most_recent_similar_activity
-            %li.last_time
-              Last Time:
-              =last_time_list(set.most_recent_similar_activity)
+          / -if set.most_recent_similar_activity
+          /   %li.last_time
+          /     Last Time:
+          /     =last_time_list(set.most_recent_similar_activity)
 
 
         - if set.set_records.any?
