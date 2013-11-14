@@ -33,8 +33,9 @@ class Workout < ActiveRecord::Base
 
   def mark_uncompleted
     self.completed = nil
-
   end
+
+
 
   def due_date_if_specifying_user
     unless user_id.blank?
