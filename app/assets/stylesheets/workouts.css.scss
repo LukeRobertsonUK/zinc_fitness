@@ -224,15 +224,19 @@ ul.maximums {
 ul.maximums li {
   display: block;
   // color: $default;
-  font-size: 1em;
+  font-size: 0.8em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
 }
 
 ul.maximums li:nth-child(odd){
   color: $default;
+
 }
 
 ul.maximums li:nth-child(even){
-  color: grey;
+  color: $default_light;
+
 }
 
 
