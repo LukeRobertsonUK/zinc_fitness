@@ -29,13 +29,14 @@
         = exercise_set_heading(set)
       %ul.exercise_set
         -unless @workout.completed
-          -if @workout.user.personal_bests[set.exercise.name]
-            %li.last_time
-              = "Personal Best: #{@workout.user.personal_bests[set.exercise.name]}kg"
-          -if set.most_recent_similar_activity
-            %li.last_time
-              Last Time:
-              =last_time_list(set.most_recent_similar_activity)
+          -if @workout.user
+            -if @workout.user.personal_bests[set.exercise.name]
+              %li.last_time
+                = "Personal Best: #{@workout.user.personal_bests[set.exercise.name]}kg"
+            -if set.most_recent_similar_activity
+              %li.last_time
+                Last Time:
+                =last_time_list(set.most_recent_similar_activity)
         - if set.set_records.any?
 
           %li.achieved_weight
