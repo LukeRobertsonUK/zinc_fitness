@@ -7,8 +7,9 @@ class ExerciseSet < ActiveRecord::Base
   attr_accessible :achieved_weight, :reps, :rest_period, :suggested_weight, :weight_required, :exercise_id, :workout_id, :set_type, :distance, :time, :notes, :sets, :set_records_attributes
   accepts_nested_attributes_for :set_records, allow_destroy: true
 
+# figure out if this is necessary... and if removing it helps my last time field
 
-  default_scope order('created_at' )
+  # default_scope order('created_at' )
 
   validates :exercise_id, presence: true
   validates :sets, presence: true
