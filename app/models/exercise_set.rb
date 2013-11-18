@@ -7,9 +7,6 @@ class ExerciseSet < ActiveRecord::Base
   attr_accessible :achieved_weight, :reps, :rest_period, :suggested_weight, :weight_required, :exercise_id, :workout_id, :set_type, :distance, :time, :notes, :sets, :set_records_attributes
   accepts_nested_attributes_for :set_records, allow_destroy: true
 
-# figure out if this is necessary... and if removing it helps my last time field
-
-  # default_scope order('created_at' )
 
   validates :exercise_id, presence: true
   validates :sets, presence: true
@@ -21,7 +18,7 @@ class ExerciseSet < ActiveRecord::Base
 
 
   def most_recent_similar_activity
-    self.user.exercise_sets.where({exercise_id: self.exercise_id, sets: self.sets, reps: self.reps}).order('updated_at DESC').reject{|set| set.id == self.id}.reject{|set| set.workout.completed != true}.reject{|set| (set.set_records.blank? && set.notes.blank?)}.first
+    self.user.exercise_sets.where({exercise_id: self.exercise_id, sets: self.sets, reps: self.reps}).order('updated_at DESC').reject{|set| set.id == self.id}.reject{|set| set.workout.completed != true}.first
   end
 
 
