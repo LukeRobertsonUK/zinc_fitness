@@ -24,7 +24,7 @@
     %p
       = @workout.instructions
 
-    - @workout.exercise_sets.order('created_at' ).each do |set|
+    - @workout.exercise_sets.each do |set|
       %h3.exercise_set_header
         = exercise_set_heading(set)
       %ul.exercise_set

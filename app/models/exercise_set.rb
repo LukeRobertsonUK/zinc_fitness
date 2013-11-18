@@ -9,7 +9,7 @@ class ExerciseSet < ActiveRecord::Base
 
 # figure out if this is necessary... and if removing it helps my last time field
 
-  # default_scope order('created_at' )
+  default_scope order('created_at' )
 
   validates :exercise_id, presence: true
   validates :sets, presence: true
