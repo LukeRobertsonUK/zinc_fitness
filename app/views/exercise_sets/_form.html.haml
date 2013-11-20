@@ -15,7 +15,7 @@
         %p Only modify these fields if you are unable to complete the activity set by your trainer!
         .field.force_block
           =f.label :exercise, "Exercise:"
-          = f.collection_select :exercise_id, Exercise.all, :id, :name, {include_blank: "Select Exercise"}
+          = f.collection_select :exercise_id, Exercise.all, :id, :name
         .field
           =f.label :sets, "Sets:"
           =f.number_field :sets, min: 1, step: 1, class: "four_digit_entry"
