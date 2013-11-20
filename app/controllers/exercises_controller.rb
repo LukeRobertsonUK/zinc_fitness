@@ -2,6 +2,21 @@ class ExercisesController < ApplicationController
   load_and_authorize_resource
   # GET /exercises
   # GET /exercises.json
+
+  def list
+
+    list = []
+    exercises = Exercise.where("lower(name) LIKE ?", "%#{params[:term].downcase}%")
+    exercises.each { |exercise| list <<  exercise.name}
+
+    respond_to do |format|
+      format.json {render json: list.to_json, layout: false}
+    end
+
+  end
+
+
+
   def index
     @q = Exercise.order('name ASC').search(params[:q])
     @exercises = @q.result(distinct: true).page(params[:page])

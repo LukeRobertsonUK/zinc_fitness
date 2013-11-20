@@ -77,6 +77,13 @@ var activityModify = function(){
 
 
 
+var autoCompleteExercise = function(selector){
+  selector.autocomplete({
+    source: '/list.json'
+  })
+}
+
+
 
 
 
@@ -87,6 +94,11 @@ $(function() {
       changeYear: true,
       dateFormat: "yy-mm-dd",
     });
+
+  var initialExerciseFields = $('.exercise_selector');
+  for(var i = 0; i < initialExerciseFields.length; i++){
+    autoCompleteExercise(initialExerciseFields.eq(i))
+  };
 
   var initialWeightFields = $('.weight_entry');
   for(var i =0; i < initialWeightFields.length; i++){
@@ -108,9 +120,11 @@ $(function() {
     var weightSelector = event.field.find('.weight_entry');
     var distanceSelector = event.field.find('.distance_entry');
     var intervalSelector = event.field.find('.interval_entry');
+    var exerciseSelector = event.field.find('.exercise_selector');
     changeWeightField(weightSelector);
     changeIntervalField(intervalSelector);
     changeDistanceField(distanceSelector);
+    autoCompleteExercise(exerciseSelector);
   })
 
    dueDateNeeded();

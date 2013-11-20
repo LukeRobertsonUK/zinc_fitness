@@ -1,7 +1,8 @@
 = f.fields_for :exercise_sets do |exercise_set_form|
   .set_box
     .field.exercise_adder
-      = exercise_set_form.collection_select :exercise_id, Exercise.all, :id, :name, {include_blank: "Select Exercise"}, {class: "exercise_selector"}
+      = exercise_set_form.label :exercise_name
+      = exercise_set_form.text_field :exercise_name, class: "exercise_selector"
       = exercise_set_form.link_to_remove 'Remove', class: "btn btn-danger btn-xs"
     .reps_and_rest
       .field

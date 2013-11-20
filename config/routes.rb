@@ -14,9 +14,10 @@ ZincFitnessApp::Application.routes.draw do
 
   devise_for :users
 
-   get '/users', to: "users#index", as: 'users'
+  get '/users', to: "users#index", as: 'users'
   get '/users/:id', to: "users#show", as: 'user'
 
+  get'/list', to: "exercises#list", as: 'list'
 
   resources :workouts do
     member do

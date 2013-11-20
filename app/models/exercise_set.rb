@@ -4,12 +4,20 @@ class ExerciseSet < ActiveRecord::Base
   has_one :user, through: :workout
   has_many :set_records
   before_destroy :destroy_set_records
-  attr_accessible :achieved_weight, :reps, :rest_period, :suggested_weight, :weight_required, :exercise_id, :workout_id, :set_type, :distance, :time, :notes, :sets, :set_records_attributes
+  attr_accessible :achieved_weight, :reps, :rest_period, :suggested_weight, :weight_required, :exercise_id, :workout_id, :set_type, :distance, :time, :notes, :sets, :set_records_attributes, :exercise_name
   accepts_nested_attributes_for :set_records, allow_destroy: true
 
 
-  validates :exercise_id, presence: true
+  validates :exercise_name, presence: true
   validates :sets, presence: true
+
+  def exercise_name
+    exercise.name if exercise
+  end
+
+  def exercise_name=(name)
+    self.exercise = Exercise.find_or_create_by_name(name) unless name.blank?
+  end
 
 
   def destroy_set_records
