@@ -9,6 +9,8 @@
     =f.submit "Search", class: "btn btn-success btn-xs"
 
 .row
+  .col-md-12
+    %p Please note that you will only have the option to delete Exercises that are NOT being used within existing Workouts.
 
   .col-md-12
     - if @exercises.blank?
@@ -25,7 +27,8 @@
               = link_to 'View', exercise_path(exercise), class: "btn btn-primary btn-xs not_corner"
               -if can? :manage, :all
                 = link_to 'Edit', edit_exercise_path(exercise), class: "btn btn-default btn-xs not_corner"
-                = link_to 'Delete', exercise, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs not_corner "
+                - if exercise.workouts.blank?
+                  = link_to 'Delete', exercise, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs not_corner "
       = paginate @exercises
       %br
 .row
