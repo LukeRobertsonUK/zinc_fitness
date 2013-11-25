@@ -6,6 +6,16 @@ class Exercise < ActiveRecord::Base
   default_scope order('name' )
   validates :name, presence: true
   validates :name, uniqueness: true
+  before_destroy :check_not_in_use
+
+
+  def check_not_in_use
+    unless self.workouts.blank?
+      errors.add(:base, "This Exercise cannot be deleted as it is used in existing Workouts")
+      return false
+    end
+  end
+
 
 
 end
