@@ -6,7 +6,7 @@ class ExercisesController < ApplicationController
   def list
 
     list = []
-    exercises = Exercise.where("lower(name) LIKE ?", "%#{params[:term].downcase}%")
+    exercises = Exercise.where("lower(name) LIKE ?", "%#{params[:term].downcase}%").limit(10)
     exercises.each { |exercise| list <<  exercise.name}
 
     respond_to do |format|
